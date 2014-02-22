@@ -26,7 +26,9 @@ projects[commerce_checkout_progress][version] = '1.3'
 ;commerce_add_to_cart_confirmation
 projects[commerce_add_to_cart_confirmation][type] = 'module'
 projects[commerce_add_to_cart_confirmation][subdir] = 'contrib'
-projects[commerce_add_to_cart_confirmation][version] = '1.0-rc2'
+projects[commerce_add_to_cart_confirmation][download][type] = 'git'
+projects[commerce_add_to_cart_confirmation][download][url] = 'http://git.drupal.org/project/commerce_add_to_cart_confirmation.git'
+projects[commerce_add_to_cart_confirmation][download][revision] = '69ee3178724e688b0c388b051e1a58a7a54636f1'
 
 ;commerce_price_components
 projects[commerce_price_components][type] = 'module'
