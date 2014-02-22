@@ -1,0 +1,9 @@
+name = Adapt Commerce
+description = Commerce related modules
+core = 7.x
+package = Adapt
+
+; Contrib
+dependencies[] = adapt_core
+dependencies[] = commerce
+dependencies[] = commerce_features
