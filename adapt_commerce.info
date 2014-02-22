@@ -5,5 +5,7 @@ package = Adapt
 
 ; Contrib
 dependencies[] = adapt_core
+dependencies[] = rules
+dependencies[] = addressfield
 dependencies[] = commerce
 dependencies[] = commerce_features

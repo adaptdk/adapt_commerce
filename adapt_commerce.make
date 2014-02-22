@@ -13,6 +13,11 @@ projects[commerce][download][type] = 'git'
 projects[commerce][download][url] = 'http://git.drupal.org/project/commerce.git'
 projects[commerce][download][revision] = '03029f947b77493482c28376b873c22992838af1'
 
+;addressfield
+projects[addressfield][type] = 'module'
+projects[addressfield][subdir] = 'contrib'
+projects[addressfield][version] = '1.0-beta5'
+
 ;commerce_checkout_progress
 projects[commerce_checkout_progress][type] = 'module'
 projects[commerce_checkout_progress][subdir] = 'contrib'
