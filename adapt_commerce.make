@@ -13,31 +13,26 @@ projects[commerce][download][type] = 'git'
 projects[commerce][download][url] = 'http://git.drupal.org/project/commerce.git'
 projects[commerce][download][revision] = '03029f947b77493482c28376b873c22992838af1'
 
-;addressfield
-projects[addressfield][type] = 'module'
-projects[addressfield][subdir] = 'contrib'
-projects[addressfield][version] = '1.0-beta5'
-
-;commerce_checkout_progress
+; commerce_checkout_progress
 projects[commerce_checkout_progress][type] = 'module'
 projects[commerce_checkout_progress][subdir] = 'contrib'
 projects[commerce_checkout_progress][version] = '1.3'
 
-;commerce_add_to_cart_confirmation
+; commerce_add_to_cart_confirmation
 projects[commerce_add_to_cart_confirmation][type] = 'module'
 projects[commerce_add_to_cart_confirmation][subdir] = 'contrib'
 projects[commerce_add_to_cart_confirmation][download][type] = 'git'
 projects[commerce_add_to_cart_confirmation][download][url] = 'http://git.drupal.org/project/commerce_add_to_cart_confirmation.git'
 projects[commerce_add_to_cart_confirmation][download][revision] = '69ee3178724e688b0c388b051e1a58a7a54636f1'
 
-;commerce_price_components
+; commerce_price_components
 projects[commerce_price_components][type] = 'module'
 projects[commerce_price_components][subdir] = 'contrib'
 projects[commerce_price_components][download][type] = 'git'
 projects[commerce_price_components][download][url] = 'http://git.drupal.org/project/commerce_price_components.git'
 projects[commerce_price_components][download][revision] = '6f15871d90c1694b2ba9a59d15789b1b26e84458'
 
-;commerce_extra_price_formatters
+; commerce_extra_price_formatters
 projects[commerce_extra_price_formatters][type] = 'module'
 projects[commerce_extra_price_formatters][subdir] = 'contrib'
 projects[commerce_add_to_cart_confirmation][version] = '1.1'
@@ -47,23 +42,23 @@ projects[commerce_shipping][type] = 'module'
 projects[commerce_shipping][subdir] = 'contrib'
 projects[commerce_shipping][version] = '2.1'
 
-;commerce_flat_rate
+; commerce_flat_rate
 projects[commerce_flat_rate][type] = 'module'
 projects[commerce_flat_rate][subdir] = 'contrib'
 projects[commerce_flat_rate][version] = '1.0-beta2'
 
-;commerce_features
+; commerce_features
 projects[commerce_features][type] = 'module'
 projects[commerce_features][subdir] = 'contrib'
 projects[commerce_features][version] = '1.0'
 projects[commerce_features][patch][] = 'http://drupal.org/files/1402762_export_flat_rate_commerce_features-6.patch'
 
-;commerce_migrate
+; commerce_migrate
 projects[commerce_migrate][type] = 'module'
 projects[commerce_migrate][subdir] = 'contrib'
 projects[commerce_migrate][version] = '1.1'
 
-;commerce_search_api
+; commerce_search_api
 projects[commerce_search_api][type] = 'module'
 projects[commerce_search_api][subdir] = 'contrib'
 projects[commerce_search_api][version] = '1.3'
