@@ -63,6 +63,10 @@ projects[commerce_search_api][type] = 'module'
 projects[commerce_search_api][subdir] = 'contrib'
 projects[commerce_search_api][version] = '1.3'
 
+projects[commerce_rules_extra][type] = 'module'
+projects[commerce_rules_extra][subdir] = 'contrib'
+projects[commerce_rules_extra][version] = '1.3'
+
 ; ****************
 ; * TRANSLATIONS *
 ; ****************
