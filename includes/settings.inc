@@ -9,11 +9,10 @@
 // file of adapt_commerce. These modules are not depencies as we wan't to be able
 // to disadble them on a pr. project basis.
 $modules_enable = array(
-  'commerce_shipping',
+  'commerce_tax',
+  'commerce_tax_ui',
   'commerce_checkout_progress',
   'commerce_add_to_cart_confirmation',
   'commerce_price_components',
   'commerce_extra_price_formatters',
-  'commerce_shipping',
-  'commerce_flat_rate',
 );

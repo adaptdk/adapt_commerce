@@ -30,7 +30,7 @@ projects[commerce_price_components][type] = 'module'
 projects[commerce_price_components][subdir] = 'contrib'
 projects[commerce_price_components][download][type] = 'git'
 projects[commerce_price_components][download][url] = 'http://git.drupal.org/project/commerce_price_components.git'
-projects[commerce_price_components][download][revision] = '6f15871d90c1694b2ba9a59d15789b1b26e84458'
+projects[commerce_price_components][download][revision] = 'b1c63c97057e63ba6ff199a91d7c31a28e5e0595'
 
 ; commerce_extra_price_formatters
 projects[commerce_extra_price_formatters][type] = 'module'
