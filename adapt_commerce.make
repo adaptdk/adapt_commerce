@@ -12,6 +12,7 @@ projects[commerce][subdir] = 'contrib'
 projects[commerce][download][type] = 'git'
 projects[commerce][download][url] = 'http://git.drupal.org/project/commerce.git'
 projects[commerce][download][revision] = '03029f947b77493482c28376b873c22992838af1'
+projects[commerce][download][branch] = "7.x-1.x"
 
 ; commerce_checkout_progress
 projects[commerce_checkout_progress][type] = 'module'
@@ -24,6 +25,7 @@ projects[commerce_add_to_cart_confirmation][subdir] = 'contrib'
 projects[commerce_add_to_cart_confirmation][download][type] = 'git'
 projects[commerce_add_to_cart_confirmation][download][url] = 'http://git.drupal.org/project/commerce_add_to_cart_confirmation.git'
 projects[commerce_add_to_cart_confirmation][download][revision] = '69ee3178724e688b0c388b051e1a58a7a54636f1'
+projects[commerce_add_to_cart_confirmation][download][branch] = "7.x-1.x"
 
 ; commerce_price_components
 projects[commerce_price_components][type] = 'module'
@@ -31,6 +33,7 @@ projects[commerce_price_components][subdir] = 'contrib'
 projects[commerce_price_components][download][type] = 'git'
 projects[commerce_price_components][download][url] = 'http://git.drupal.org/project/commerce_price_components.git'
 projects[commerce_price_components][download][revision] = 'b1c63c97057e63ba6ff199a91d7c31a28e5e0595'
+projects[commerce_price_components][download][branch] = "7.x-1.x"
 
 ; commerce_extra_price_formatters
 projects[commerce_extra_price_formatters][type] = 'module'
