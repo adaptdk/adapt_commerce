@@ -4,6 +4,7 @@ core = 7.x
 package = adapt_commerce
 dependencies[] = entity
 dependencies[] = search_api
+dependencies[] = search_api_solr
 features[features_api][] = api:2
 features[search_api_index][] = ac_index
 project path = profiles/adapt_commerce_demo/modules/custom
