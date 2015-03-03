@@ -2,17 +2,14 @@
 core = 7.x
 api = 2
 
-; ***********
-; * MODULES *
-; ***********
+; ********************
+; * MODULES COMMERCE *
+; ********************
 
 ; commerce
 projects[commerce][type] = 'module'
 projects[commerce][subdir] = 'contrib'
-projects[commerce][download][type] = 'git'
-projects[commerce][download][url] = 'http://git.drupal.org/project/commerce.git'
-projects[commerce][download][revision] = '03029f947b77493482c28376b873c22992838af1'
-projects[commerce][download][branch] = "7.x-1.x"
+projects[commerce][version] = '1.11'
 
 ; commerce_checkout_progress
 projects[commerce_checkout_progress][type] = 'module'
@@ -56,21 +53,13 @@ projects[commerce_features][subdir] = 'contrib'
 projects[commerce_features][version] = '1.0'
 projects[commerce_features][patch][] = 'http://drupal.org/files/1402762_export_flat_rate_commerce_features-6.patch'
 
-; commerce_migrate
-projects[commerce_migrate][type] = 'module'
-projects[commerce_migrate][subdir] = 'contrib'
-projects[commerce_migrate][version] = '1.1'
-
-; commerce_search_api
-projects[commerce_search_api][type] = 'module'
-projects[commerce_search_api][subdir] = 'contrib'
-projects[commerce_search_api][version] = '1.3'
-
+; commerce_rules_extra
 projects[commerce_rules_extra][type] = 'module'
 projects[commerce_rules_extra][subdir] = 'contrib'
-projects[commerce_rules_extra][version] = '1.3'
+projects[commerce_rules_extra][version] = '2.1'
 
 ; ****************
 ; * TRANSLATIONS *
 ; ****************
+
 translations[] = da
