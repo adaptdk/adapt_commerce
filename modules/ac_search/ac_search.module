@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ac search feature.
+ */
+
+include_once 'ac_search.features.inc';

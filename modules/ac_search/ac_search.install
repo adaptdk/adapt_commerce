@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * Install file for ac_search
+ */
+
+/**
+ * Implements hook_install().
+ * Setup solr server on install to avoid indexing to wrong server by mistake because server info is in features
+ */
+function ac_search_install() {
+  // Create the default Search API server.
+  $values = array(
+    'machine_name' => 'ac_server',
+    'name' => 'ac server',
+    'description' => '',
+    'class' => 'search_api_solr_service',
+    'options' => array(
+      'clean_ids' => TRUE,
+      'scheme' => 'http',
+      'host' => '127.0.0.1',
+      'port' => '8983',
+      'path' => '/solr/ac',
+      'excerpt' => 0,
+      'retrieve_data' => 0,
+      'highlight_data' => 0,
+      'http_method' => 'AUTO',
+      'autocorrect_spell' => 1,
+      'autocorrect_suggest_words' => 1
+    ),
+  );
+  search_api_server_insert($values);
+}
