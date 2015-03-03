@@ -26,3 +26,8 @@ package = Adapt
 ;dependencies[] = commerce_product_reference
 ;dependencies[] = commerce_product_ui
 ;dependencies[] = commerce_features
+
+;dependencies[] = facetapi
+;dependencies[] = search_api
+;dependencies[] = search_api_solr
+;dependencies[] = search_api_sorts

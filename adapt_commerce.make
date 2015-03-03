@@ -58,6 +58,35 @@ projects[commerce_rules_extra][type] = 'module'
 projects[commerce_rules_extra][subdir] = 'contrib'
 projects[commerce_rules_extra][version] = '2.1'
 
+
+; ********************
+; * MODULES SEARCH *
+; ********************
+
+; facetapi
+projects[facetapi][subdir] = "contrib"
+projects[facetapi][version] = "1.5"
+
+; Regression: 'Show more/fewer' links are no longer translatable - https://www.drupal.org/node/2311585
+projects[facetapi][patch][] = 'http://www.drupal.org/files/issues/2311585-3-facetapi-7.x-1.x-translate_more_link.patch'
+
+; search_api
+projects[search_api][subdir] = "contrib"
+projects[search_api][version] = "1.14"
+
+; TrackItemChange not checking for empty $item_ids - https://www.drupal.org/node/1956650
+; Says committed, but still not in version 1.14
+projects[search_api][patch][] = https://www.drupal.org/files/1956650-2--tracking_empty_item_ids--debugging.patch
+
+; search_api_solr
+projects[search_api_solr][subdir] = "contrib"
+projects[search_api_solr][version] = "1.6"
+
+; search_api_sorts
+projects[search_api_sorts][subdir] = "contrib"
+projects[search_api_sorts][version] = "1.5"
+
+
 ; ****************
 ; * TRANSLATIONS *
 ; ****************
