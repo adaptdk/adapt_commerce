@@ -373,7 +373,7 @@ function ac_product_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_products',
     'label' => 'Products',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'field_injection' => 1,
       'referenceable_types' => array(
