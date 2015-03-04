@@ -15,7 +15,47 @@ function ac_product_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_commerce_product__product';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'add_to_cart_confirmation_view' => array(
+        'custom_settings' => TRUE,
+      ),
+      'line_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'node_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'commerce_line_item_display' => array(
+        'custom_settings' => FALSE,
+      ),
+      'commerce_line_item_diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'commerce_line_item_token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'node_full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'node_rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'node_diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'node_token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'sku' => array(
@@ -28,7 +68,38 @@ function ac_product_strongarm() {
           'weight' => '4',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'sku' => array(
+          'node_teaser' => array(
+            'weight' => '-10',
+            'visible' => TRUE,
+          ),
+          'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+        ),
+        'title' => array(
+          'node_teaser' => array(
+            'weight' => '-5',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '1',
+            'visible' => TRUE,
+          ),
+        ),
+        'status' => array(
+          'node_teaser' => array(
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
+          'default' => array(
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_commerce_product__product'] = $strongarm;
@@ -67,11 +138,19 @@ function ac_product_strongarm() {
             'weight' => '6',
             'visible' => FALSE,
           ),
+          'teaser' => array(
+            'weight' => '6',
+            'visible' => FALSE,
+          ),
         ),
         'product:title' => array(
           'default' => array(
             'weight' => '7',
             'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '2',
+            'visible' => TRUE,
           ),
         ),
         'product:status' => array(
@@ -79,10 +158,18 @@ function ac_product_strongarm() {
             'weight' => '8',
             'visible' => FALSE,
           ),
+          'teaser' => array(
+            'weight' => '8',
+            'visible' => FALSE,
+          ),
         ),
         'product:commerce_price' => array(
           'default' => array(
             'weight' => '5',
+            'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '4',
             'visible' => TRUE,
           ),
         ),
@@ -154,7 +241,7 @@ function ac_product_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_brand_pattern';
-  $strongarm->value = '[term:vocabulary]/[term:name]';
+  $strongarm->value = '[term:name]';
   $export['pathauto_taxonomy_term_brand_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
