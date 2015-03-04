@@ -5,3 +5,64 @@
  */
 
 include_once 'ac_search.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory
+ */
+function ac_search_ctools_plugin_directory($module, $plugin) {
+  // we'll be nice and limit scandir() calls
+  if ($module == 'ctools') {
+    return "plugins/$plugin";
+  }
+}
+
+function ac_search_ctools_plugin_post_alter(&$widget, &$plugin_type_info) {
+  if (!empty($plugin_type_info['hook']) && $plugin_type_info['hook'] == "facetapi_adapters") {
+    $widget['handler']['class'] = 'acSearchApiFacetapiAdapter';
+    $widget['handler']['module'] = 'ac_search';
+    $widget['handler']['name'] = 'ac_adapter';
+    $widget['handler']['path'] = drupal_get_path('module', 'ac_search');
+  }
+}
+
+/**
+ * Implements hook_facetapi_url_processors().
+ */
+function ac_search_facetapi_url_processors() {
+  return array(
+    'ac_url_processor' => array(
+      'handler' => array(
+        'label' => t('ac Url processor'),
+        'class' => 'acFacetapiUrlProcessor',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_facetapi_searcher_info().
+ */
+function ac_search_facetapi_searcher_info_alter(array &$searcher_info) {
+  foreach ($searcher_info as &$info) {
+    $info['url processor'] = 'ac_url_processor';
+  }
+}
+
+/**
+ * Get currently active term(s)
+ */
+function ac_search_active_terms() {
+  $terms = &drupal_static(__FUNCTION__, array());
+
+  if (arg(0) == 'taxonomy' && arg(1) == 'term') {
+    $term = taxonomy_term_load(arg(2));
+
+    if (!empty($term)) {
+      $terms = array(
+        $term->tid => $term
+      );
+    }
+  }
+
+  return $terms;
+}
