@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ac commerce feature.
+ */
+
+include_once 'ac_commerce.features.inc';

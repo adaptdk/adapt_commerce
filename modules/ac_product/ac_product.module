@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ac product feature.
+ */
+
+include_once 'ac_product.features.inc';
