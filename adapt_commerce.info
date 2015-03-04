@@ -38,6 +38,7 @@ package = Adapt
 ;dependencies[] = search_api_views
 ;dependencies[] = current_search
 
+;dependencies[] = views_content
 
 ; Features
 
