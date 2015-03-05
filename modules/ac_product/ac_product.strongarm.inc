@@ -129,7 +129,7 @@ function ac_product_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'display' => array(
@@ -247,6 +247,13 @@ function ac_product_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_brand_pattern';
   $strongarm->value = '[term:name]';
   $export['pathauto_taxonomy_term_brand_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_category_pattern';
+  $strongarm->value = '[term:parents:join-path]/[term:name]';
+  $export['pathauto_taxonomy_term_category_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
