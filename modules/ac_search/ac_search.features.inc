@@ -48,13 +48,13 @@ function ac_search_default_search_api_index() {
         "field_brand" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_category" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_color" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "field_products:commerce_price:amount" : { "type" : "list\\u003Cinteger\\u003E" },
+        "field_products:commerce_price:amount_decimal" : { "type" : "list\\u003Cdecimal\\u003E" },
         "field_products:field_size" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_products_commerce_price_amount_asc" : { "type" : "integer" },
-        "field_products_commerce_price_amount_desc" : { "type" : "integer" },
+        "field_products_commerce_price_amount_decimal_asc" : { "type" : "decimal" },
+        "field_products_commerce_price_amount_decimal_desc" : { "type" : "decimal" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },
-        "sortable_price" : { "type" : "string" },
+        "sortable_price" : { "type" : "integer" },
         "status" : { "type" : "boolean" },
         "title" : { "type" : "text", "boost" : "5.0" },
         "type" : { "type" : "string" }
@@ -71,7 +71,13 @@ function ac_search_default_search_api_index() {
         "search_api_ranges_alter" : {
           "status" : 1,
           "weight" : "-46",
-          "settings" : { "fields" : { "field_products:commerce_price:amount" : "field_products:commerce_price:amount" } }
+          "settings" : { "fields" : { "field_products:commerce_price:amount_decimal" : {
+                "name" : "Products \\u00bb Price \\u00bb Amount (decimal)",
+                "description" : "",
+                "type" : "decimal"
+              }
+            }
+          }
         },
         "search_api_alter_language_control" : {
           "status" : 0,

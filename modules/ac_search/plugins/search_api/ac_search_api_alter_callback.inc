@@ -12,7 +12,7 @@ class acSearchApiAlterCallback extends SearchApiAbstractAlterCallback {
           $pw = entity_metadata_wrapper('commerce_product', $product);
 
           // Define sortable price
-          $item->sortable_price = $pw->commerce_price->amount->value();
+          $item->sortable_price = (int) $pw->commerce_price->amount->value();
         }
       }
     }
@@ -24,7 +24,7 @@ class acSearchApiAlterCallback extends SearchApiAbstractAlterCallback {
     $ret['sortable_price'] = array(
       'label' => 'Sortable price',
       'description' => 'Sortable price',
-      'type' => 'string',
+      'type' => 'integer',
     );
 
     return $ret;
