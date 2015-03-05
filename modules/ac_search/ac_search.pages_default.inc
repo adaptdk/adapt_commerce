@@ -43,13 +43,14 @@ function ac_search_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'flexible:25_75';
+  $display->layout = 'flexible:100_25_75';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
       'default' => NULL,
       'center' => NULL,
       'left' => NULL,
+      'top' => NULL,
     ),
   );
   $display->cache = array();
@@ -208,6 +209,29 @@ function ac_search_default_page_manager_pages() {
     $pane->uuid = 'fac8c0f7-df29-438b-a208-cf619bfbfc95';
     $display->content['new-fac8c0f7-df29-438b-a208-cf619bfbfc95'] = $pane;
     $display->panels['left'][5] = 'new-fac8c0f7-df29-438b-a208-cf619bfbfc95';
+    $pane = new stdClass();
+    $pane->pid = 'new-f4320376-5c39-4410-b653-a2b572c6cbfa';
+    $pane->panel = 'top';
+    $pane->type = 'block';
+    $pane->subtype = 'views--exp-solr_search-search_default';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'inherit_path' => 0,
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'f4320376-5c39-4410-b653-a2b572c6cbfa';
+    $display->content['new-f4320376-5c39-4410-b653-a2b572c6cbfa'] = $pane;
+    $display->panels['top'][0] = 'new-f4320376-5c39-4410-b653-a2b572c6cbfa';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

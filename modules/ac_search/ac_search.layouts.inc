@@ -13,8 +13,8 @@ function ac_search_default_panels_layout() {
   $layout = new stdClass();
   $layout->disabled = FALSE; /* Edit this to true to make a default layout disabled initially */
   $layout->api_version = 1;
-  $layout->name = '25_75';
-  $layout->admin_title = '25/75';
+  $layout->name = '100_25_75';
+  $layout->admin_title = '100/25/75';
   $layout->admin_description = '';
   $layout->category = '';
   $layout->plugin = 'flexible';
@@ -24,17 +24,17 @@ function ac_search_default_panels_layout() {
         'type' => 'row',
         'contains' => 'column',
         'children' => array(
-          0 => 1,
-          1 => 'main',
+          0 => 'main',
         ),
         'parent' => NULL,
       ),
       'main' => array(
         'type' => 'column',
-        'width' => '75.0031175957102',
+        'width' => 100,
         'width_type' => '%',
         'children' => array(
-          0 => 'main-row',
+          0 => 1,
+          1 => 'main-row',
         ),
         'parent' => 'canvas',
       ),
@@ -42,47 +42,46 @@ function ac_search_default_panels_layout() {
         'type' => 'row',
         'contains' => 'region',
         'children' => array(
-          0 => 'center',
+          0 => 'left',
+          1 => 'center',
         ),
         'parent' => 'main',
       ),
       'center' => array(
         'type' => 'region',
         'title' => 'Center',
-        'width' => 100,
+        'width' => '74.96664437540812',
         'width_type' => '%',
         'parent' => 'main-row',
-      ),
-      1 => array(
-        'type' => 'column',
-        'width' => '24.996882404289813',
-        'width_type' => '%',
-        'parent' => 'canvas',
-        'children' => array(
-          0 => 2,
-        ),
-        'class' => '',
-      ),
-      2 => array(
-        'type' => 'row',
-        'contains' => 'region',
-        'children' => array(
-          0 => 'left',
-        ),
-        'parent' => '1',
-        'class' => '',
       ),
       'left' => array(
         'type' => 'region',
         'title' => 'left',
+        'width' => '25.03335562459188',
+        'width_type' => '%',
+        'parent' => 'main-row',
+        'class' => '',
+      ),
+      1 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'top',
+        ),
+        'parent' => 'main',
+        'class' => '',
+      ),
+      'top' => array(
+        'type' => 'region',
+        'title' => 'top',
         'width' => 100,
         'width_type' => '%',
-        'parent' => '2',
+        'parent' => '1',
         'class' => '',
       ),
     ),
   );
-  $export['25_75'] = $layout;
+  $export['100_25_75'] = $layout;
 
   return $export;
 }
