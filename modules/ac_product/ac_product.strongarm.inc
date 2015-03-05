@@ -139,7 +139,7 @@ function ac_product_strongarm() {
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '6',
+            'weight' => '7',
             'visible' => FALSE,
           ),
         ),
@@ -159,7 +159,7 @@ function ac_product_strongarm() {
             'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '8',
+            'weight' => '9',
             'visible' => FALSE,
           ),
         ),
@@ -169,7 +169,7 @@ function ac_product_strongarm() {
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '4',
+            'weight' => '3',
             'visible' => TRUE,
           ),
         ),
@@ -177,6 +177,10 @@ function ac_product_strongarm() {
           'default' => array(
             'weight' => '2',
             'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '5',
+            'visible' => FALSE,
           ),
         ),
       ),
