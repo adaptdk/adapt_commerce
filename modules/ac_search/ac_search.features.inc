@@ -44,14 +44,17 @@ function ac_search_default_search_api_index() {
         "author" : { "type" : "integer", "entity_type" : "user" },
         "body:value" : { "type" : "text" },
         "changed" : { "type" : "date" },
-        "created" : { "type" : "date" },
+        "created" : { "type" : "string" },
         "field_brand" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_category" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_color" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_products:commerce_price:amount" : { "type" : "list\\u003Cinteger\\u003E" },
         "field_products:field_size" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_products_commerce_price_amount_asc" : { "type" : "integer" },
+        "field_products_commerce_price_amount_desc" : { "type" : "integer" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },
+        "sortable_price" : { "type" : "string" },
         "status" : { "type" : "boolean" },
         "title" : { "type" : "text", "boost" : "5.0" },
         "type" : { "type" : "string" }
@@ -59,20 +62,26 @@ function ac_search_default_search_api_index() {
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
           "status" : 1,
-          "weight" : "-10",
+          "weight" : "-50",
           "settings" : { "default" : "0", "bundles" : { "product_display" : "product_display" } }
         },
-        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
-        "search_api_alter_node_status" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 1, "weight" : "-49", "settings" : [] },
+        "search_api_alter_node_status" : { "status" : 1, "weight" : "-48", "settings" : [] },
+        "ac_search_alter" : { "status" : 1, "weight" : "-47", "settings" : [] },
+        "search_api_ranges_alter" : {
+          "status" : 1,
+          "weight" : "-46",
+          "settings" : { "fields" : { "field_products:commerce_price:amount" : "field_products:commerce_price:amount" } }
+        },
         "search_api_alter_language_control" : {
           "status" : 0,
-          "weight" : "0",
+          "weight" : "-45",
           "settings" : { "lang_field" : "", "languages" : [] }
         },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } }
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "-44", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "-43", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "-42", "settings" : { "fields" : [] } },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "-41", "settings" : [] }
       },
       "processors" : {
         "search_api_case_ignore" : {
@@ -129,6 +138,38 @@ function ac_search_default_search_api_index() {
     },
     "enabled" : "1",
     "read_only" : "0"
+  }');
+  return $items;
+}
+
+/**
+ * Implements hook_default_search_api_sort().
+ */
+function ac_search_default_search_api_sort() {
+  $items = array();
+  $items['ac_index__created'] = entity_import('search_api_sort', '{
+    "index_id" : "ac_index",
+    "field" : "created",
+    "name" : "Date created",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "ac_index__created",
+    "default_sort" : "1",
+    "default_sort_no_terms" : "0",
+    "default_order" : "desc",
+    "options" : { "field_name" : "Date created" }
+  }');
+  $items['ac_index__sortable_price'] = entity_import('search_api_sort', '{
+    "index_id" : "ac_index",
+    "field" : "sortable_price",
+    "name" : "Sortable price",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "ac_index__sortable_price",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "asc",
+    "options" : { "field_name" : "Sortable price" }
   }');
   return $items;
 }

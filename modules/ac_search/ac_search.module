@@ -64,6 +64,20 @@ function ac_search_facetapi_widgets() {
 }
 
 /**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function ac_search_search_api_alter_callback_info() {
+  $callbacks['ac_search_alter'] = array(
+    'name' => t('AC alteration'),
+    'description' => t('Add extra info to the index'),
+    'class' => 'acSearchApiAlterCallback',
+    'weight' => 100,
+  );
+
+  return $callbacks;
+}
+
+/**
  * Get currently active term(s)
  */
 function ac_search_active_terms() {

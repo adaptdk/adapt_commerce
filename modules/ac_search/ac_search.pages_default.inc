@@ -186,6 +186,28 @@ function ac_search_default_page_manager_pages() {
     $pane->uuid = '501080d5-4380-41aa-8328-aad7a3c74a48';
     $display->content['new-501080d5-4380-41aa-8328-aad7a3c74a48'] = $pane;
     $display->panels['left'][4] = 'new-501080d5-4380-41aa-8328-aad7a3c74a48';
+    $pane = new stdClass();
+    $pane->pid = 'new-fac8c0f7-df29-438b-a208-cf619bfbfc95';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'search_api_sorts-search-sorts';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Sort by',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 5;
+    $pane->locks = array();
+    $pane->uuid = 'fac8c0f7-df29-438b-a208-cf619bfbfc95';
+    $display->content['new-fac8c0f7-df29-438b-a208-cf619bfbfc95'] = $pane;
+    $display->panels['left'][5] = 'new-fac8c0f7-df29-438b-a208-cf619bfbfc95';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
