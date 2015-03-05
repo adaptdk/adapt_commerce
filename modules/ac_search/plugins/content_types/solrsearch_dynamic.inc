@@ -3,7 +3,7 @@ $plugin = array(
   'title' => t('AC search dynamic view'),
   'category' => t('Solr search panes'),
   'defaults' => array(),
-  'render last' => 1,
+  'render first' => 1,
 );
 
 /**
