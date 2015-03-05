@@ -36,6 +36,7 @@ package = Adapt
 ;dependencies[] = search_api_sorts
 ;dependencies[] = search_api_facetapi
 ;dependencies[] = search_api_views
+;dependencies[] = search_api_ranges
 ;dependencies[] = current_search
 
 ;dependencies[] = views_content
