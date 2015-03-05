@@ -5,6 +5,114 @@
  */
 
 /**
+ * Implements hook_commerce_features_default_checkout_panes().
+ */
+function ac_commerce_commerce_features_default_checkout_panes() {
+  $panes = array();
+
+  $panes['account'] = array(
+    'page' => 'checkout',
+    'weight' => -5,
+    'pane_id' => 'account',
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
+  );
+
+  $panes['cart_contents'] = array(
+    'page' => 'checkout',
+    'weight' => -10,
+    'pane_id' => 'cart_contents',
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
+  );
+
+  $panes['checkout_completion_message'] = array(
+    'page' => 'complete',
+    'fieldset' => FALSE,
+    'pane_id' => 'checkout_completion_message',
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
+  );
+
+  $panes['checkout_review'] = array(
+    'page' => 'review',
+    'fieldset' => FALSE,
+    'pane_id' => 'checkout_review',
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
+  );
+
+  $panes['commerce_payment'] = array(
+    'page' => 'review',
+    'weight' => 10,
+    'pane_id' => 'commerce_payment',
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
+  );
+
+  $panes['commerce_payment_redirect'] = array(
+    'page' => 'payment',
+    'pane_id' => 'commerce_payment_redirect',
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'weight' => 0,
+    'enabled' => TRUE,
+    'review' => TRUE,
+  );
+
+  $panes['commerce_shipping'] = array(
+    'page' => 'shipping',
+    'weight' => 2,
+    'review' => FALSE,
+    'pane_id' => 'commerce_shipping',
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+  );
+
+  $panes['customer_profile_billing'] = array(
+    'page' => 'checkout',
+    'weight' => 5,
+    'pane_id' => 'customer_profile_billing',
+    'fieldset' => TRUE,
+    'collapsible' => FALSE,
+    'collapsed' => FALSE,
+    'enabled' => TRUE,
+    'review' => TRUE,
+  );
+
+  $panes['customer_profile_shipping'] = array(
+    'page' => 'checkout',
+    'weight' => 0,
+    'pane_id' => 'customer_profile_shipping',
+    'fieldset' => 1,
+    'collapsible' => 0,
+    'collapsed' => 0,
+    'enabled' => 1,
+    'review' => 1,
+  );
+
+  return $panes;
+}
+
+/**
  * Implements hook_commerce_tax_default_rates().
  */
 function ac_commerce_commerce_tax_default_rates() {
