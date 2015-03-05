@@ -86,7 +86,16 @@ projects[search_api_solr][version] = "1.6"
 ; search_api_sorts
 projects[search_api_sorts][subdir] = "contrib"
 projects[search_api_sorts][version] = "1.5"
+projects[search_api_sorts][patch][] = https://www.drupal.org/files/issues/search-api-sorts-inability-to-add-fields-2202093-6_0.patch
 
+; search_api_ranges
+projects[search_api_ranges][type] = 'module'
+projects[search_api_ranges][subdir] = 'contrib'
+projects[search_api_ranges][download][type] = 'git'
+projects[search_api_ranges][download][url] = 'http://git.drupal.org/project/search_api_ranges.git'
+projects[search_api_ranges][download][revision] = 'bcc17c1'
+projects[search_api_ranges][download][branch] = "7.x-1.x"
+projects[search_api_ranges][patch][] = https://www.drupal.org/files/issues/search_api_ranges-existing-filter-tag-2294807-1.patch
 
 ; ****************
 ; * TRANSLATIONS *
