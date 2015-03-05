@@ -51,7 +51,8 @@ projects[commerce_flat_rate][version] = '1.0-beta2'
 projects[commerce_features][type] = 'module'
 projects[commerce_features][subdir] = 'contrib'
 projects[commerce_features][version] = '1.0'
-projects[commerce_features][patch][] = 'http://drupal.org/files/1402762_export_flat_rate_commerce_features-6.patch'
+projects[commerce_features][patch][1402762] = 'http://drupal.org/files/1402762_export_flat_rate_commerce_features-6.patch'
+projects[commerce_features][patch][1973602] = 'http://www.drupal.org/files/issues/make_commerce_checkout-1973602-8.patch'
 
 ; commerce_rules_extra
 projects[commerce_rules_extra][type] = 'module'
