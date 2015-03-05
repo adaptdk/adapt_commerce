@@ -11,6 +11,9 @@ function ac_search_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
   }
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -40,8 +43,9 @@ function ac_search_default_search_api_index() {
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
         "field_brand" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_category" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_color" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "field_products:commerce_price:amount" : { "type" : "list\\u003Cdecimal\\u003E" },
+        "field_products:commerce_price:amount" : { "type" : "list\\u003Cinteger\\u003E" },
         "field_products:field_size" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },

@@ -49,6 +49,21 @@ function ac_search_facetapi_searcher_info_alter(array &$searcher_info) {
 }
 
 /**
+ * Implements hook_facetapi_widgets().
+ */
+function ac_search_facetapi_widgets() {
+  return array(
+    'ac_widget_checkbox_links' => array(
+      'handler' => array(
+        'label' => t('Term path links with checkboxes'),
+        'class' => 'acFacetapiWidgetCheckboxLinks',
+        'query types' => array('term'),
+      ),
+    ),
+  );
+}
+
+/**
  * Get currently active term(s)
  */
 function ac_search_active_terms() {

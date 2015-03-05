@@ -19,11 +19,12 @@ function ac_search_facetapi_default_facet_settings() {
   $facet->facet = 'field_brand';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'or',
+    'operator' => 'and',
     'hard_limit' => '-1',
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -36,6 +37,34 @@ function ac_search_facetapi_default_facet_settings() {
     'exclude' => 0,
   );
   $export['search_api@ac_index::field_brand'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@ac_index::field_category';
+  $facet->searcher = 'search_api@ac_index';
+  $facet->realm = '';
+  $facet->facet = 'field_category';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'and',
+    'hard_limit' => '-1',
+    'dependencies' => array(
+      'bundle' => 'none',
+      'bundle_selected' => array(),
+      'roles' => array(),
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => '0',
+    'individual_parent' => '0',
+    'query_type' => 'term',
+    'limit_active_items' => 0,
+    'default_true' => TRUE,
+    'facet_search_ids' => array(),
+    'exclude' => 0,
+  );
+  $export['search_api@ac_index::field_category'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
@@ -106,6 +135,7 @@ function ac_search_facetapi_default_facet_settings() {
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -113,7 +143,7 @@ function ac_search_facetapi_default_facet_settings() {
     'individual_parent' => 0,
     'query_type' => 'term',
     'limit_active_items' => 0,
-    'default_true' => '1',
+    'default_true' => TRUE,
     'facet_search_ids' => array(),
     'exclude' => 0,
   );
@@ -273,7 +303,7 @@ function ac_search_facetapi_default_facet_settings() {
   $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
+    'widget' => 'ac_widget_checkbox_links',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',
@@ -283,14 +313,14 @@ function ac_search_facetapi_default_facet_settings() {
     ),
     'sort_weight' => array(
       'active' => '-50',
-      'count' => '-48',
       'display' => '-49',
+      'count' => '-48',
       'indexed' => '-47',
     ),
     'sort_order' => array(
       'active' => '3',
-      'count' => '3',
       'display' => '4',
+      'count' => '3',
       'indexed' => '4',
     ),
     'empty_behavior' => 'none',
@@ -305,6 +335,49 @@ function ac_search_facetapi_default_facet_settings() {
     ),
   );
   $export['search_api@ac_index:block:field_brand'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@ac_index:block:field_category';
+  $facet->searcher = 'search_api@ac_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_category';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'ac_widget_checkbox_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'display' => 'display',
+      'count' => 0,
+      'indexed' => 0,
+    ),
+    'sort_weight' => array(
+      'active' => '-50',
+      'display' => '-49',
+      'count' => '-48',
+      'indexed' => '-47',
+    ),
+    'sort_order' => array(
+      'active' => '3',
+      'display' => '4',
+      'count' => '3',
+      'indexed' => '4',
+    ),
+    'empty_behavior' => 'none',
+    'facet_more_text' => 'Show more',
+    'facet_fewer_text' => 'Show fewer',
+    'soft_limit' => '0',
+    'nofollow' => 1,
+    'show_expanded' => 0,
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'filtered_html',
+    ),
+  );
+  $export['search_api@ac_index:block:field_category'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
@@ -412,20 +485,20 @@ function ac_search_facetapi_default_facet_settings() {
     ),
     'sort_weight' => array(
       'active' => '-50',
-      'count' => '-48',
       'display' => '-49',
+      'count' => '-48',
       'indexed' => '-47',
     ),
     'sort_order' => array(
       'active' => '3',
-      'count' => '3',
       'display' => '4',
+      'count' => '3',
       'indexed' => '4',
     ),
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => '0',
+    'soft_limit' => '3',
     'nofollow' => 1,
     'show_expanded' => 0,
     'empty_text' => array(
