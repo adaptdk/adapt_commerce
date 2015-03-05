@@ -17,6 +17,14 @@ function ac_product_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'category' => array(
+      'name' => 'Category',
+      'machine_name' => 'category',
+      'description' => '',
+      'hierarchy' => 1,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'color' => array(
       'name' => 'Color',
       'machine_name' => 'color',

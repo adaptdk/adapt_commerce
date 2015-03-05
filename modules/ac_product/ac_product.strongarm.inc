@@ -122,6 +122,9 @@ function ac_product_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -135,7 +138,7 @@ function ac_product_strongarm() {
       'display' => array(
         'product:sku' => array(
           'default' => array(
-            'weight' => '6',
+            'weight' => '8',
             'visible' => FALSE,
           ),
           'teaser' => array(
@@ -145,7 +148,7 @@ function ac_product_strongarm() {
         ),
         'product:title' => array(
           'default' => array(
-            'weight' => '7',
+            'weight' => '9',
             'visible' => FALSE,
           ),
           'teaser' => array(
@@ -155,7 +158,7 @@ function ac_product_strongarm() {
         ),
         'product:status' => array(
           'default' => array(
-            'weight' => '8',
+            'weight' => '10',
             'visible' => FALSE,
           ),
           'teaser' => array(
@@ -165,7 +168,7 @@ function ac_product_strongarm() {
         ),
         'product:commerce_price' => array(
           'default' => array(
-            'weight' => '5',
+            'weight' => '7',
             'visible' => TRUE,
           ),
           'teaser' => array(
@@ -175,7 +178,7 @@ function ac_product_strongarm() {
         ),
         'product:field_size' => array(
           'default' => array(
-            'weight' => '2',
+            'weight' => '3',
             'visible' => TRUE,
           ),
           'teaser' => array(
