@@ -20,39 +20,16 @@ class acFacetapiWidgetCheckboxLinks extends FacetapiWidgetCheckboxLinks {
    * @return array|void
    */
   function buildListItems($build) {
-    $settings = $this->settings->settings;
-
     foreach ($build as $value => &$item) {
-      //$build[$value]['#path'] = '';
       if ($item['#active']) {
-        // Strip any query filters
-        //$this->strip_filters_for_facet($item['#query'], $this->facet['field alias']);
 
-        // Set path to term url
-        //$item['#path'] = 'taxonomy/term/' . $item['#indexed_value'];
-
-        // Set path to search page so active items enable by path can be removed
+        // Set path to search page so active items enable by path can be removed (this is not optimal and should be
+        // fixed in a better way)
         $item['#path'] = 's';
       }
-
     }
 
     $items = parent::buildListItems($build);
     return $items;
-  }
-
-  /**
-   * Strip all filters for given facet
-   * @param array $qstring
-   * @param string $facet_alias
-   */
-  private function strip_filters_for_facet(&$qstring, $facet_alias) {
-    if (isset($qstring[$this->filterKey])) {
-      foreach ($qstring[$this->filterKey] as $k => $v) {
-        if (stripos($v, $facet_alias) !== FALSE) {
-          unset($qstring[$this->filterKey][$k]);
-        }
-      }
-    }
   }
 }

@@ -12,19 +12,6 @@ class acFacetapiUrlProcessor extends FacetapiUrlProcessorStandard {
   public function getQueryString(array $facet, array $values, $active) {
     $qstring = parent::getQueryString($facet, $values, $active);
 
-    // Special rules for vocabularies in dynamic term pages
-//    if (in_array($facet['field'], array(
-//      'field_category',
-//      'field_manufacturer',
-//      'field_brand',
-//      'field_gender',
-//      'field_sport',
-//      'field_type'
-//    ))) {
-//      // Always reset facet
-//      $this->strip_filters_for_facet($qstring, $facet['field alias']);
-//    }
-
     // Set qstring to nothing if no filters are set to avoid a ? to be appended to the url needlessly
     if (empty($qstring[$this->filterKey])) {
       $qstring = '';

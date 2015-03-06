@@ -78,6 +78,20 @@ function ac_search_search_api_alter_callback_info() {
 }
 
 /**
+ * Implements hook_current_search_items().
+ */
+function ac_search_current_search_items() {
+  return array(
+    'ac_active' => array(
+      'handler' => array(
+        'label' => t('AC active items'),
+        'class' => 'acCurrentSearchGroup',
+      ),
+    ),
+  );
+}
+
+/**
  * Get currently active term(s)
  */
 function ac_search_active_terms() {

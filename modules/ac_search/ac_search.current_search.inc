@@ -30,15 +30,11 @@ function ac_search_current_search_default_items() {
         'classes' => '',
         'weight' => '-50',
       ),
-      'active_items' => array(
-        'id' => 'active',
-        'label' => 'Active items',
-        'pattern' => '[facetapi_active:active-value]',
-        'keys' => 1,
-        'css' => 0,
-        'classes' => '',
+      'ac_items' => array(
+        'field_pattern' => '[facetapi_facet:facet-label]:',
         'nofollow' => 1,
-        'weight' => '-49',
+        'id' => 'ac_active',
+        'label' => 'ac_items',
       ),
     ),
     'advanced' => array(
