@@ -21,6 +21,8 @@ package = Adapt
 ;dependencies[] = commerce_features
 ;dependencies[] = commerce_shipping
 ;dependencies[] = commerce_coupon
+;dependencies[] = commerce_coupon_pct
+;dependencies[] = commerce_coupon_fixed_amount
 
 ;dependencies[] = commerce_ui
 ;dependencies[] = commerce_customer_ui
@@ -30,6 +32,7 @@ package = Adapt
 ;dependencies[] = commerce_product_pricing_ui
 ;dependencies[] = commerce_product_ui
 ;dependencies[] = commerce_shipping_ui
+;dependencies[] = commerce_coupon_ui
 
 ;dependencies[] = facetapi
 ;dependencies[] = search_api

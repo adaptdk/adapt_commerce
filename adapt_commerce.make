@@ -68,6 +68,16 @@ projects[commerce_coupon][download][revision] = 124fd85c49ae33885e3da4ecab1f71dc
 projects[commerce_coupon][patch][] = "http://svnhosttest.adapt.dk/case_and_space_insensitive_coupon.patch"
 projects[commerce_coupon][patch][1797184] = http://www.drupal.org/files/commerce_coupon-1797184-do-not-load-all-coupons-on-checkout-24.patch
 
+; commerce_coupon_pct
+projects[commerce_coupon_pct][type] = 'module'
+projects[commerce_coupon_pct][subdir] = 'contrib'
+projects[commerce_coupon_pct][version] = '1.0-beta7'
+
+; commerce_coupon_fixed_amount
+projects[commerce_coupon_fixed_amount][type] = 'module'
+projects[commerce_coupon_fixed_amount][subdir] = 'contrib'
+projects[commerce_coupon_fixed_amount][version] = '1.0-beta7'
+
 ; ********************
 ; * MODULES SEARCH *
 ; ********************
