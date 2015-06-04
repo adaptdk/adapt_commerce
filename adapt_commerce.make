@@ -73,4 +73,4 @@ projects[commerce_rules_extra][version] = '1.3'
 ; ****************
 ; * TRANSLATIONS *
 ; ****************
-translations[] = da
+; translations[] = da
