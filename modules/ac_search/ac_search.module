@@ -10,7 +10,6 @@ include_once 'ac_search.features.inc';
  * Implements hook_ctools_plugin_directory
  */
 function ac_search_ctools_plugin_directory($module, $plugin) {
-  dpm($plugin);
   // we'll be nice and limit scandir() calls
   if ($module == 'page_manager' || $module == 'panels' || $module == 'ctools' || $module == 'stylizer') {
     return "plugins/$plugin";

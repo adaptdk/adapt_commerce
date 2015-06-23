@@ -58,5 +58,4 @@ files[] = plugins/facetapi/ac_adapter.inc
 files[] = plugins/facetapi/ac_facetapi_widget_links.inc
 files[] = plugins/search_api/ac_search_api_alter_callback.inc
 files[] = plugins/current_search/ac_current_search.inc
-mtime = 1425651693
 project path = profiles/adapt_commerce_demo/modules/custom

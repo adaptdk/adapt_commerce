@@ -16,7 +16,7 @@
  *
  */
 ?>
-<section class="twocol-left">
+<section class="twocol-25-75">
   <div class="top">
     <?php if($content['top']): ?>
       <?php print $content['top']; ?>

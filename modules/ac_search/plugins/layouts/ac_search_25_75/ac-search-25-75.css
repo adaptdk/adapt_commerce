@@ -1,35 +1,35 @@
-.page-admin .twocol-left {
+.page-admin .twocol-25-75 {
   float: left;
   width: 100%;
 }
 
-.page-admin .twocol-left:before {
+.page-admin .twocol-25-75:before {
   content: ".";
   display: block;
   height: 0;
   overflow: hidden;
 }
 
-.page-admin .twocol-left:after {
+.page-admin .twocol-25-75:after {
   clear: both;
 }
 
-.page-admin .twocol-left > .top {
+.page-admin .twocol-25-75 > .top {
   width: 100%;
   float: left;
-	margin-left: 0;
+  margin-left: 0;
   margin-right: 0;
-	margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
-.page-admin .twocol-left > aside {
+.page-admin .twocol-25-75 > aside {
   width: 34%;
   float: left;
   margin-left: 0%;
   margin-right: 2%;
 }
 
-.page-admin .twocol-left > section {
+.page-admin .twocol-25-75 > section {
   width: 64%;
   float: right;
   margin-left: 0;
