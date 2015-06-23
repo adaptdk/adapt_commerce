@@ -1,0 +1,37 @@
+.page-admin .twocol-left {
+  float: left;
+  width: 100%;
+}
+
+.page-admin .twocol-left:before {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.page-admin .twocol-left:after {
+  clear: both;
+}
+
+.page-admin .twocol-left > .top {
+  width: 100%;
+  float: left;
+	margin-left: 0;
+  margin-right: 0;
+	margin-bottom: 2%;
+}
+
+.page-admin .twocol-left > aside {
+  width: 34%;
+  float: left;
+  margin-left: 0%;
+  margin-right: 2%;
+}
+
+.page-admin .twocol-left > section {
+  width: 64%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+}
