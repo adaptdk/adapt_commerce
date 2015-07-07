@@ -12,6 +12,10 @@ class acSearchApiAlterCallback extends SearchApiAbstractAlterCallback {
           $pw = entity_metadata_wrapper('commerce_product', $product);
 
           // Define sortable price
+          $limw = commerce_product_calculate_sell_price($product);
+          $item->price_filter = $limw['amount'];
+          $item->price_filter = $item->price_filter / 100;
+
           $item->sortable_price = (int) $pw->commerce_price->amount->value();
         }
       }
@@ -26,6 +30,13 @@ class acSearchApiAlterCallback extends SearchApiAbstractAlterCallback {
       'description' => 'Sortable price',
       'type' => 'integer',
     );
+
+    $ret['price_filter'] = array(
+      'label' => 'Price filter',
+      'description' => 'Price filter',
+      'type' => 'decimal',
+    );
+
 
     return $ret;
   }
