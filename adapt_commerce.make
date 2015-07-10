@@ -40,7 +40,7 @@ projects[commerce_add_to_cart_confirmation][version] = '1.1'
 ; commerce_shipping
 projects[commerce_shipping][type] = 'module'
 projects[commerce_shipping][subdir] = 'contrib'
-projects[commerce_shipping][version] = '2.1'
+projects[commerce_shipping][version] = '2.2'
 
 ; commerce_flat_rate
 projects[commerce_flat_rate][type] = 'module'
@@ -91,7 +91,7 @@ projects[facetapi][patch][] = 'http://www.drupal.org/files/issues/2311585-3-face
 
 ; search_api
 projects[search_api][subdir] = "contrib"
-projects[search_api][version] = "1.14"
+projects[search_api][version] = "1.15"
 
 ; TrackItemChange not checking for empty $item_ids - https://www.drupal.org/node/1956650
 ; Says committed, but still not in version 1.14
@@ -99,7 +99,7 @@ projects[search_api][patch][] = https://www.drupal.org/files/1956650-2--tracking
 
 ; search_api_solr
 projects[search_api_solr][subdir] = "contrib"
-projects[search_api_solr][version] = "1.6"
+projects[search_api_solr][version] = "1.8"
 
 ; search_api_sorts
 projects[search_api_sorts][subdir] = "contrib"
