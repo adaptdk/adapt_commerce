@@ -13,8 +13,16 @@ class acSearchApiAlterCallback extends SearchApiAbstractAlterCallback {
 
           // Define sortable price
           $limw = commerce_product_calculate_sell_price($product);
+          if (module_exists('commerce_currency_settings')) {
+            $cur_settings = commerce_currency_settings_core_currencies(TRUE, TRUE);
+          }
+          else {
+            module_load_include('inc', 'commerce', 'includes/commerce.currency');
+            $cur_settings = module_invoke_all('commerce_currency_info');
+          }
+          $currency = $cur_settings[$limw['currency_code']];
           $item->price_filter = $limw['amount'];
-          $item->price_filter = $item->price_filter / 100;
+          $item->price_filter = (strpos($currency['decimal_separator'], $item->price_filter) !== FALSE) ? $item->price_filter / 100 : $item->price_filter;
 
           $item->sortable_price = (int) $pw->commerce_price->amount->value();
         }
