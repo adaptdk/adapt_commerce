@@ -42,7 +42,7 @@ class acSearchApiAlterCallback extends SearchApiAbstractAlterCallback {
     $ret['price_filter'] = array(
       'label' => 'Price filter',
       'description' => 'Price filter',
-      'type' => 'decimal',
+      'type' => 'integer',
     );
 
 

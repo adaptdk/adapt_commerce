@@ -58,6 +58,7 @@ function ac_search_default_search_api_index() {
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },
         "sortable_price" : { "type" : "integer" },
+        "price_filter" : { "type" : "integer" },
         "status" : { "type" : "boolean" },
         "title" : { "type" : "text", "boost" : "5.0" },
         "type" : { "type" : "string" }
@@ -179,6 +180,18 @@ function ac_search_default_search_api_sort() {
     "default_sort_no_terms" : "0",
     "default_order" : "asc",
     "options" : { "field_name" : "Sortable price" }
+  }');
+  $items['ac_index__price_filter'] = entity_import('search_api_sort', '{
+    "index_id" : "ac_index",
+    "field" : "price_filter",
+    "name" : "Price filter",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "ac_index__price_filter",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "asc",
+    "options" : { "field_name" : "Price filter" }
   }');
   return $items;
 }
