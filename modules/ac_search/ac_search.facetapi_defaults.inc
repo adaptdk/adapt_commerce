@@ -1008,7 +1008,7 @@ function ac_search_facetapi_default_facet_settings() {
   $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
-    'widget' => 'facetapi_links',
+    'widget' => 'facetapi_checkbox_links',
     'filters' => array(),
     'active_sorts' => array(
       'active' => 'active',
