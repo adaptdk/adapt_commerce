@@ -119,5 +119,4 @@ projects[search_api_ranges][patch][] = https://www.drupal.org/files/issues/searc
 ; ****************
 ; * TRANSLATIONS *
 ; ****************
-
 ; translations[] = da
