@@ -23,6 +23,7 @@ projects[commerce_add_to_cart_confirmation][download][type] = 'git'
 projects[commerce_add_to_cart_confirmation][download][url] = 'http://git.drupal.org/project/commerce_add_to_cart_confirmation.git'
 projects[commerce_add_to_cart_confirmation][download][revision] = '69ee3178724e688b0c388b051e1a58a7a54636f1'
 projects[commerce_add_to_cart_confirmation][download][branch] = "7.x-1.x"
+projects[commerce_add_to_cart_confirmation][patch][2159009] = https://www.drupal.org/files/issues/commerce_add_to_cart_confirmation-replace_live_with_delegate-2159009-8.patch
 
 ; commerce_price_components
 projects[commerce_price_components][type] = 'module'
