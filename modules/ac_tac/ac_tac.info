@@ -1,0 +1,5 @@
+name = ac terms and conditions
+package = adapt_commerce
+description = "Terms and conditions pane for checkout process"
+core = 7.x
+dependencies[] = commerce_checkout

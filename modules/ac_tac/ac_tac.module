@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * Code to implement module functionallity.
+ */
+
+/**
+ * Implements hook_commerce_checkout_pane_info()
+ */
+function ac_tac_commerce_checkout_pane_info() {
+  $panes = array();
+
+  $panes['ac_terms_and_conditions'] = array(
+    'title' => t('Terms and conditions'),
+    'base' => 'ac_tac',
+    'page' => 'review',
+    'file' => 'includes/terms_and_conditions.checkout_pane.inc',
+  );
+
+  return $panes;
+}
