@@ -8,8 +8,6 @@
  * Implements hook_settings_form()
  */
 function ac_mailchimp_extension_settings_form($checkout_pane) {
-  $title = '';
-
   $form['ac_mailchimp_extension_panel_title'] = array(
     '#type' => 'textfield',
     '#title' => t('Panel title'),
