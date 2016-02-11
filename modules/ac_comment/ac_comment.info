@@ -1,0 +1,9 @@
+name = ac comment
+package = adapt_commerce
+description = "This module adds an ability to leave a comment comment during the checkout"
+core = 7.x
+dependencies[] = commerce_checkout
+dependencies[] = defaultconfig
+features[defaultconfig][] = field_default_fields:commerce_order-commerce_order-field_comment
+features[features_api][] = api:2
+features_exclude[dependencies][defaultconfig] = defaultconfig
