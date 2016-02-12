@@ -40,12 +40,9 @@ function ac_mailchimp_extension_settings_form($checkout_pane) {
  * Implements hook_checkout_form()
  */
 function ac_mailchimp_extension_checkout_form($form, $form_state, $checkout_pane, $order) {
-  $link_text = variable_get('ac_tac_text', t('Read the terms and conditions here'));
   $checkout_form = array();
-  $link = l(t($link_text), 'node/' . variable_get('ac_tac_node', ''));
-  $text = t('I accept the terms and conditions. !link', array('!link' => $link));
   $promoted_subscription_lists = variable_get('ac_mailchimp_extension_list');
-
+  
   $lists = mailchimp_get_lists();
   if (!empty($lists) && !empty($promoted_subscription_lists)) {
     foreach ($lists as $key => $value) {
@@ -112,7 +109,7 @@ function ac_mailchimp_extension_checkout_form_submit($form, &$form_state, $check
     foreach ($subscriptions as $key => $value) {
       if ($value == 1 && !mailchimp_is_subscribed($key, $email)) {
         // If email is not in subscribtion list - subscribe.
-        mailchimp_subscribe($list['id'], $email, $mergevars);
+        mailchimp_subscribe($key, $email, $vars);
       }
     }
 
