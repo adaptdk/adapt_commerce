@@ -36,3 +36,7 @@ function ac_comment_checkout_form($form, $form_state, $checkout_pane, $order) {
 
   return $checkout_form;
 }
+
+function ac_comment_checkout_form_submit($form, &$form_state, $checkout_pane, $order) {
+  $form_state['order']->field_comment[LANGUAGE_NONE][0]['value'] = $form_state['values']['adapt_commerce_comment']['ac_comment'];
+}

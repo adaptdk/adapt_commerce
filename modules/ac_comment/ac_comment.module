@@ -11,24 +11,8 @@ function ac_comment_commerce_checkout_pane_info() {
     'base' => 'ac_comment',
     'page' => 'checkout',
     'file' => 'includes/comment.checkout_pane.inc',
+
   );
 
   return $panes;
-}
-
-/**
- * Implements hook_form_alter().
- */
-function ac_comment_form_commerce_checkout_form_checkout_alter(&$form, &$form_state, $form_id) {
-  $form['buttons']['continue']['#submit'][] = 'ac_comment_subscribtion_submit';
-}
-
-/**
- * Submits ac_comment checkout pane form.
- * @param array $form
- * @param array $form_state
- */
-function ac_comment_subscribtion_submit($form, &$form_state) {
-  $form_state['order']->field_comment[LANGUAGE_NONE][0]['value'] = $form_state['values']['adapt_commerce_comment']['ac_comment'];
-  commerce_order_save($form_state['order']);
 }
