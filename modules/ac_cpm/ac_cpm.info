@@ -1,0 +1,5 @@
+name = ac checkout pane multiplier
+package = adapt_commerce
+description = "Gives you ability to duplicate checkout panes"
+core = 7.x
+dependencies[] = commerce_checkout

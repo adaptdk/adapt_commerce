@@ -15,6 +15,7 @@ function ac_tac_commerce_checkout_pane_info() {
     'base' => 'ac_tac',
     'page' => 'review',
     'file' => 'includes/terms_and_conditions.checkout_pane.inc',
+    'review' => false,
   );
 
   return $panes;

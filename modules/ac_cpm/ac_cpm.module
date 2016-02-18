@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * NOT FINISHED
+ * Implements hook_menu().
+ */
+function ac_cpm_menu(){
+  $items = array();
+
+  $items['admin/commerce/config/checkout/multiplier'] = array(
+    'title' => 'Checkout pane multiplier',
+    'description' => 'Enables you to clone panes and set their position in checkout workflow. (currently pane multiplying(cloning) works for viewing the pane only)',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ac_cpm_multipier_settings_form'),
+    'access arguments' => array('administer checkout'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 5,
+    'file' => 'includes/ac_cpm.admin.inc',
+  );
+}
+
+/**
+ * Implements hook_commerce_checkout_pane_info_alter().
+ * @param array $checkout_panes
+ */
+function ac_cpm_commerce_checkout_pane_info_alter(&$checkout_panes) {
+  //ac_cpm_variable_select
+//  $checkout_panes['my_checkout_review'] = $checkout_panes['checkout_review'];
+//  $checkout_panes['my_checkout_review']['title'] = '[Duped] Review'; // to differentiate
+//  $checkout_panes['my_checkout_review']['page'] = 'complete'; // to differentiate
+//  $checkout_panes['my_checkout_review']['weight'] = -25; // to differentiate
+}
+
+/**
+ * Selects from variables with given prefix.
+ * @todo move to global tools
+ * @global array $conf
+ * @param string $prefix
+ * @return array
+ */
+function ac_cpm_variable_select($prefix) {
+  $found = array();
+
+  global $conf;
+  foreach ($conf as $key => $value) {
+    if (strpos($key, $prefix) === 0) {
+      $found[$key] = $value;
+    }
+  }
+
+  return empty($found) ? FALSE : $found;
+}

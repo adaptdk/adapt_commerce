@@ -40,3 +40,11 @@ function ac_comment_checkout_form($form, $form_state, $checkout_pane, $order) {
 function ac_comment_checkout_form_submit($form, &$form_state, $checkout_pane, $order) {
   $form_state['order']->field_comment[LANGUAGE_NONE][0]['value'] = $form_state['values']['adapt_commerce_comment']['ac_comment'];
 }
+
+/**
+ * Checkout pane callback: returns comment for a review pane/table.
+ *   Review checkout pane.
+ */
+function ac_comment_review($form, $form_state, $checkout_pane, $order) {
+  return $order->field_comment[LANGUAGE_NONE][0]['value'];
+}
