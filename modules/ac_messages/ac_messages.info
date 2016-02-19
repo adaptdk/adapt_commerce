@@ -2,3 +2,11 @@ name = Adapt Commerce Messages
 description = This module provides a default setup for commerce messages.
 core = 7.x
 package = Adapt
+
+;dependencies[] = commerce_message
+;dependencies[] = emogrifier
+;dependencies[] = htmlmail
+;dependencies[] = mailsystem
+;dependencies[] = message
+;dependencies[] = message_notify
+;dependencies[] = pathologic
