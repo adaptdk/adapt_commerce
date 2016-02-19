@@ -122,7 +122,6 @@ projects[search_api_ranges][patch][] = https://www.drupal.org/files/issues/searc
 ; Commerce Message
 projects[commerce_message][subdir] = 'contrib'
 projects[commerce_message][version] = '1.0-rc4'
-projects[commerce_message][patch][2171201] = https://www.drupal.org/files/issues/undefined_property-2171201-19.patch
 projects[commerce_message][patch][1895418] = https://www.drupal.org/files/issues/commerce_message-1895418-63-order-summary-missing.patch
 projects[commerce_message][patch][2366413] = https://www.drupal.org/files/issues/2366413-unlock-order-summary-for-other-message-types.patch
 
