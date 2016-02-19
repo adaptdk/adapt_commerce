@@ -10,27 +10,23 @@
  * Implements hook_theme().
  */
 function ac_messages_theme($existing, $type, $theme, $path) {
-  $path = drupal_get_path('module', 'ac_messages') . '/tpl';
-
-  $themes = array(
-    'ac_contact_information' => array(
-      'template' => 'ac-contact-information',
+  return array(
+    'ac_messages_information' => array(
+      'template' => 'ac-messages-information',
       'variables' => array(
         'content' => '',
         'shipping_address' => array(),
         'billing_address' => array(),
       ),
-      'path' => $path,
+      'path' => $path . '/tpl',
     ),
   );
-
-  return $themes;
 }
 
 /**
  * Preprocess function for contact information.
  */
-function ac_messages_preprocess_ac_contact_information(&$variables) {
+function ac_messages_preprocess_ac_messages_information(&$variables) {
   $shipping_address = $variables['shipping_address'];
   $billing_address = $variables['billing_address'];
   $header = array($shipping_address['title'], $billing_address['title']);

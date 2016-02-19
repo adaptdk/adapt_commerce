@@ -34,22 +34,7 @@ function ac_comment_tokens($type, $tokens, array $data = array(), array $options
         // Lets get shipping service.
         $comment = $wrapper->field_comment->value();
         if (isset($comment)) {
-          $header = array(
-            t('Comment'),
-          );
-          $rows = array(0 => array($comment));
-          $attributes = array(
-            'class' => array('contact-info'),
-          );
-          $table = theme(
-            'table',
-            array(
-              'header' => $header,
-              'rows' => $rows,
-              'attributes' => $attributes,
-            )
-          );
-          $replacements[$original] = $table;
+          $replacements[$original] = theme('ac_comment_token_view', array('comment' => $comment));
         }
         else {
           $replacements[$original] = "";

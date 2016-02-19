@@ -41,7 +41,7 @@ function ac_messages_tokens($type, $tokens, array $data = array(), array $option
       $shipping_address = _ac_messages_get_address($data['commerce-order']);
       $billing_address = _ac_messages_get_address($data['commerce-order'], 'commerce_customer_billing');
       $replacements[$original] = theme(
-        'ac_contact_information',
+        'ac_messages_information',
         array(
           'shipping_address' => $shipping_address,
           'billing_address' => $billing_address

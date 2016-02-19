@@ -21,5 +21,37 @@ function ac_comment_commerce_checkout_pane_info() {
  * Implements hook_theme().
  */
 function ac_comment_theme($existing, $type, $theme, $path) {
+  return array(
+    'ac_comment_token_view' => array(
+      'template' => 'ac-comment-token-view',
+      'variables' => array(
+        'comment' => '',
+        'content' => '',
+      ),
+      'path' => $path . '/tpl',
+    ),
+  );
+}
 
+/**
+ * Preprocess function for contact information.
+ */
+function ac_comment_preprocess_ac_comment_token_view(&$variables) {
+  $comment = $variables['comment'];
+  $header = array(
+    t('Comment'),
+  );
+  $rows = array(0 => array($comment));
+  $attributes = array(
+    'class' => array('contact-info'),
+  );
+  $table = theme(
+    'table',
+    array(
+      'header' => $header,
+      'rows' => $rows,
+      'attributes' => $attributes,
+    )
+  );
+  $variables['content'] = $table;
 }
