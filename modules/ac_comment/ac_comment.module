@@ -16,3 +16,10 @@ function ac_comment_commerce_checkout_pane_info() {
 
   return $panes;
 }
+
+/**
+ * Implements hook_theme().
+ */
+function ac_comment_theme($existing, $type, $theme, $path) {
+
+}

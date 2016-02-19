@@ -1,0 +1,96 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: jesperbisgaard
+ * Date: 15/02/16
+ * Time: 14:25
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ac_messages_theme($existing, $type, $theme, $path) {
+  $path = drupal_get_path('module', 'ac_messages') . '/tpl';
+
+  $themes = array(
+    'ac_contact_information' => array(
+      'template' => 'ac-contact-information',
+      'variables' => array(
+        'content' => '',
+        'shipping_address' => array(),
+        'billing_address' => array(),
+      ),
+      'path' => $path,
+    ),
+  );
+
+  return $themes;
+}
+
+/**
+ * Preprocess function for contact information.
+ */
+function ac_messages_preprocess_ac_contact_information(&$variables) {
+  $shipping_address = $variables['shipping_address'];
+  $billing_address = $variables['billing_address'];
+  $header = array($shipping_address['title'], $billing_address['title']);
+  $rows[0] = array($shipping_address['address'], $billing_address['address']);
+  $attributes = array(
+    'class' => array('contact-info'),
+  );
+  $variables['content'] = theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => $attributes));
+}
+
+/**
+ * Get order shipping information.
+ *
+ * @param object $order.
+ *   Order object.
+ * @param string $type.
+ *   The address type to fetch information about.
+ *
+ * @return string
+ *   Rendered order shipping address field.
+ */
+function _ac_messages_get_address($order, $type = 'commerce_customer_shipping') {
+  // Get order entity wrapper.
+  $wrapper = entity_metadata_wrapper('commerce_order', $order);
+  // Fetch address type data.
+  $address = $wrapper->{$type}->commerce_customer_address->value();
+  // Set title.
+  switch ($type) {
+    case 'commerce_customer_billing':
+      $title = t('Billing address');
+      break;
+    default:
+      $title = t('Shipping address');
+  }
+
+  $address_render_array = addressfield_generate($address, array('address' => 'address'), array('mode' => 'render'));
+  $address['address'] = drupal_render($address_render_array);
+  $address['title'] = $title;
+
+  return $address;
+}
+
+/**
+ * Get order contact information.
+ *
+ * @param $order
+ *   Object of order.
+ *
+ * @return string
+ *   Rendered theme for contact information.
+ * @throws \Exception
+ */
+function _ac_messages_get_order_contact_information($order) {
+  // Lets get Contact information.
+  $user = user_load($order->uid);
+  $data = array('mail' => $user->mail);
+  if (!empty($user->field_address)) {
+    $data['name'] = !empty($user->field_address[LANGUAGE_NONE][0]['name_line']) ? $user->field_address[LANGUAGE_NONE][0]['name_line'] :  $user->name;
+    $data['phone'] = $user->field_address[LANGUAGE_NONE][0]['phone_number'];
+    $data['mobile'] = $user->field_address[LANGUAGE_NONE][0]['mobile_number'];
+  }
+  return theme('ac_contact_information', array('data' => $data));
+}
