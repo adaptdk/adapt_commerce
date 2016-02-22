@@ -141,6 +141,7 @@ projects[mailsystem][version] = '2.34'
 ; Message
 projects[message][subdir] = 'contrib'
 projects[message][version] = '1.10'
+projects[message][patch][2629474] = https://www.drupal.org/files/issues/message-mysql57_compatibility-2629474-4.patch
 
 ; Message Notify
 projects[message_notify][subdir] = 'contrib'
