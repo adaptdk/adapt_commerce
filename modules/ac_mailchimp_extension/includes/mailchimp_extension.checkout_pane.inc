@@ -63,6 +63,9 @@ function ac_mailchimp_extension_checkout_form($form, $form_state, $checkout_pane
  * Checks if user is already subscribed and if not, adds his/her email to given email lists.
  */
 function ac_mailchimp_extension_checkout_form_submit($form, &$form_state, $checkout_pane, $order){
+  if(!isset($form_state['values']['adapt_commerce_mailchimp_extension']['ac_mailchimp_extension_list'])){
+    return;
+  }
   $subscriptions = $form_state['values']['adapt_commerce_mailchimp_extension']['ac_mailchimp_extension_list'];
 
   // If none is chosen, skip subscribtion.
