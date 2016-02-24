@@ -1,10 +1,11 @@
 <?php
 
+define('AC_CPM_CHECKOUT_PREFIX', 'ac_cpm_duplicates_');
+
 /**
- * NOT FINISHED
  * Implements hook_menu().
  */
-function ac_cpm_menu(){
+function ac_cpm_menu() {
   $items = array();
 
   $items['admin/commerce/config/checkout/multiplier'] = array(
@@ -14,9 +15,46 @@ function ac_cpm_menu(){
     'page arguments' => array('ac_cpm_multipier_settings_form'),
     'access arguments' => array('administer checkout'),
     'type' => MENU_LOCAL_TASK,
-    'weight' => 5,
+    'weight' => 20, // lets make it last tab in checkout UI.
     'file' => 'includes/ac_cpm.admin.inc',
   );
+
+  return $items;
+}
+
+/**
+ * Implements hook_commerce_checkout_pane_info().
+ */
+function ac_cpm_commerce_checkout_pane_info() {
+  $checkout_panes = array();
+
+  // Take from variables using our prefix.
+  $checkout_pane_settings = ac_cpm_variable_select(AC_CPM_CHECKOUT_PREFIX);
+  if (!empty($checkout_pane_settings)) {
+    foreach ($checkout_pane_settings as $key => $duplicates) {
+      // We do not check if it is 0 or less than 0... We need to duplicate it when it is more than 1.
+      if ($duplicates > 1) {
+        $checkout_panes += ac_cpm_make_duplicates($key, $duplicates);
+      }
+    }
+  }
+
+  return $checkout_panes;
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function ac_cpm_module_implements_alter(&$implementations, $hook) {
+
+  // Even if we have the lowest weight in the system dir. 
+  // Making shure that your mod is the last on a very special/important hook.
+  if ($hook == 'commerce_checkout_pane_info') {
+    $module = 'ac_cpm';
+    $group = $implementations[$module];
+    unset($implementations[$module]);
+    $implementations[$module] = $group;
+  }
 }
 
 /**
@@ -29,6 +67,37 @@ function ac_cpm_commerce_checkout_pane_info_alter(&$checkout_panes) {
 //  $checkout_panes['my_checkout_review']['title'] = '[Duped] Review'; // to differentiate
 //  $checkout_panes['my_checkout_review']['page'] = 'complete'; // to differentiate
 //  $checkout_panes['my_checkout_review']['weight'] = -25; // to differentiate
+}
+
+/**
+ *
+ * @param string $title
+ * @param int $duplicates
+ * @return array
+ */
+function ac_cpm_make_duplicates($title, $duplicates) {
+  $checkout_panes = array();
+  $availabel_checkout_panes = commerce_checkout_panes();
+  $pane_key = substr($title, strlen(AC_CPM_CHECKOUT_PREFIX));
+
+  for ($i = 1; $i < $duplicates; $i++) {
+    if (isset($availabel_checkout_panes[$pane_key])) {
+      $pane = $availabel_checkout_panes[$pane_key];
+      $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i] = $pane;
+
+      // Sometimes pane does not have path to file.
+      if (isset($pane['file'])) {
+        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['file'];
+      } else {
+        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['module'] . '.module';
+      }
+    } else {
+      // Looks like the pane does not exists anymore.
+      return array();
+    }
+  }
+
+  return $checkout_panes;
 }
 
 /**
@@ -48,5 +117,5 @@ function ac_cpm_variable_select($prefix) {
     }
   }
 
-  return empty($found) ? FALSE : $found;
+  return empty($found) ? null : $found;
 }
