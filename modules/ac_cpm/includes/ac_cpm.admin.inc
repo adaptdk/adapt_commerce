@@ -5,7 +5,7 @@
  */
 function ac_cpm_multipier_settings_form($form, &$form_state) {
   $form = array();
-  $duplicates = ac_cpm_variable_select(AC_CPM_CHECKOUT_PREFIX, array());
+  $duplicates = _ac_cpm_variable_select(AC_CPM_CHECKOUT_PREFIX, array());
   $availabel_checkout_panes = commerce_checkout_panes();
   $form['#attached']['css'] = array(
     drupal_get_path('module', 'ac_cpm') . '/css/ac_cpm.css',

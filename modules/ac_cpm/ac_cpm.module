@@ -28,14 +28,10 @@ function ac_cpm_menu() {
 function ac_cpm_commerce_checkout_pane_info() {
   $checkout_panes = array();
 
-  // Take from variables using our prefix.
-  $checkout_pane_settings = ac_cpm_variable_select(AC_CPM_CHECKOUT_PREFIX);
-  if (!empty($checkout_pane_settings)) {
-    foreach ($checkout_pane_settings as $key => $duplicates) {
-      // We do not check if it is 0 or less than 0... We need to duplicate it when it is more than 1.
-      if ($duplicates > 1) {
-        $checkout_panes += ac_cpm_make_duplicates($key, $duplicates);
-      }
+  foreach (get_ac_cpm_checkout_pane_settings() as $key => $duplicates) {
+    // We do not check if it is 0 or less than 0... We need to duplicate it when it is more than 1.
+    if ($duplicates > 1) {
+      $checkout_panes += ac_cpm_make_duplicates($key, $duplicates);
     }
   }
 
@@ -77,20 +73,26 @@ function ac_cpm_commerce_checkout_pane_info_alter(&$checkout_panes) {
  */
 function ac_cpm_make_duplicates($title, $duplicates) {
   $checkout_panes = array();
-  $availabel_checkout_panes = commerce_checkout_panes();
+  $available_chckout_pane = commerce_checkout_panes();
   $pane_key = substr($title, strlen(AC_CPM_CHECKOUT_PREFIX));
 
   for ($i = 1; $i < $duplicates; $i++) {
-    if (isset($availabel_checkout_panes[$pane_key])) {
-      $pane = $availabel_checkout_panes[$pane_key];
+    if (isset($available_chckout_pane[$pane_key])) {
+      $pane = $available_chckout_pane[$pane_key];
       $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i] = $pane;
-
+      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['weight']);
+      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['page']);
+      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['review']);
+      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['collapsible']);
+      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['collapsed']);
+      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['enabled']);
+      
       // Sometimes pane does not have path to file.
-      if (isset($pane['file'])) {
-        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['file'];
-      } else {
-        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['module'] . '.module';
-      }
+//      if (isset($pane['file'])) {
+//        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['file'];
+//      } else {
+//        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['module'] . '.module';
+//      }
     } else {
       // Looks like the pane does not exists anymore.
       return array();
@@ -107,7 +109,7 @@ function ac_cpm_make_duplicates($title, $duplicates) {
  * @param string $prefix
  * @return array
  */
-function ac_cpm_variable_select($prefix) {
+function _ac_cpm_variable_select($prefix) {
   $found = array();
 
   global $conf;
@@ -118,4 +120,31 @@ function ac_cpm_variable_select($prefix) {
   }
 
   return empty($found) ? null : $found;
+}
+
+/**
+ * Trims those
+ * @param array $panes
+ */
+function _ac_cpm_trim_singles(&$panes) {
+  if (!empty($panes)) {
+    foreach ($panes as $key => $value) {
+      if ($value == 1) {
+        unset($panes[$key]);
+      }
+    }
+  }
+}
+
+/**
+ * @return array
+ */
+function get_ac_cpm_checkout_pane_settings() {
+  // Take from variables using our prefix.
+  $checkout_pane_settings = _ac_cpm_variable_select(AC_CPM_CHECKOUT_PREFIX);
+  if (empty($checkout_pane_settings)) {
+    return array();
+  }
+  _ac_cpm_trim_singles($checkout_pane_settings);
+  return $checkout_pane_settings;
 }
