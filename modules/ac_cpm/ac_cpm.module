@@ -92,6 +92,7 @@ function ac_cpm_make_duplicates($title, $multiply_number) {
 
       // Save our pane imidiatelly if it was not saved.
       if (!_ac_cpm_is_saved($key) && isset($pane['saved']) && $pane['saved']) {
+        $duplicates[$key]['saved'] = false;
         commerce_checkout_pane_save($duplicates[$key]);
       }
 
