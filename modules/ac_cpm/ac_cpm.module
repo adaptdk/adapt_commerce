@@ -71,35 +71,38 @@ function ac_cpm_commerce_checkout_pane_info_alter(&$checkout_panes) {
  * @param int $duplicates
  * @return array
  */
-function ac_cpm_make_duplicates($title, $duplicates) {
-  $checkout_panes = array();
-  $available_chckout_pane = commerce_checkout_panes();
-  $pane_key = substr($title, strlen(AC_CPM_CHECKOUT_PREFIX));
+function ac_cpm_make_duplicates($title, $multiply_number) {
+  $duplicates = array();
 
-  for ($i = 1; $i < $duplicates; $i++) {
-    if (isset($available_chckout_pane[$pane_key])) {
-      $pane = $available_chckout_pane[$pane_key];
-      $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i] = $pane;
-      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['weight']);
-      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['page']);
-      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['review']);
-      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['collapsible']);
-      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['collapsed']);
-      unset($checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['enabled']);
+  // While we are the last hook - some of panes will be saved till now so we can take them.
+  $available_checkout_pane = commerce_checkout_panes();
+  $pane_id = substr($title, strlen(AC_CPM_CHECKOUT_PREFIX));
+
+  for ($i = 1; $i < $multiply_number; $i++) {
+    if (isset($available_checkout_pane[$pane_id])) {
+      $pane = $available_checkout_pane[$pane_id];
+      $key = AC_CPM_CHECKOUT_PREFIX . $pane_id . $i;
+      $duplicates[$key] = $pane;
+      $duplicates[$key]['pane_id'] = $key;
+
+      // Save our pane imidiatelly if it was not saved.
+      if (!_ac_cpm_is_saved($key)) {
+        commerce_checkout_pane_save($duplicates[$key]);
+      }
       
-      // Sometimes pane does not have path to file.
-//      if (isset($pane['file'])) {
-//        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['file'];
-//      } else {
-//        $checkout_panes[AC_CPM_CHECKOUT_PREFIX . $pane_key . $i]['file'] = drupal_get_path('module', $pane['module']) . '/' . $pane['module'] . '.module';
-//      }
+      unset($duplicates[$key]['weight']);
+      unset($duplicates[$key]['page']);
+      unset($duplicates[$key]['review']);
+      unset($duplicates[$key]['collapsible']);
+      unset($duplicates[$key]['collapsed']);
+      unset($duplicates[$key]['enabled']);
     } else {
       // Looks like the pane does not exists anymore.
       return array();
     }
   }
 
-  return $checkout_panes;
+  return $duplicates;
 }
 
 /**
@@ -147,4 +150,18 @@ function get_ac_cpm_checkout_pane_settings() {
   }
   _ac_cpm_trim_singles($checkout_pane_settings);
   return $checkout_pane_settings;
+}
+
+/**
+ * Function to check if the given pane is saved to "commerce_checkout_pane" tabel.
+ * @param string $pane_id
+ * @return boolean
+ */
+function _ac_cpm_is_saved($pane_id) {
+  $saved_panes = db_query('SELECT * FROM {commerce_checkout_pane}')->fetchAllAssoc('pane_id', PDO::FETCH_ASSOC);
+  if (isset($saved_panes[$pane_id])) {
+    return true;
+  }
+
+  return false;
 }
