@@ -58,11 +58,16 @@ function ac_cpm_module_implements_alter(&$implementations, $hook) {
  * @param array $checkout_panes
  */
 function ac_cpm_commerce_checkout_pane_info_alter(&$checkout_panes) {
-  //ac_cpm_variable_select
-//  $checkout_panes['my_checkout_review'] = $checkout_panes['checkout_review'];
-//  $checkout_panes['my_checkout_review']['title'] = '[Duped] Review'; // to differentiate
-//  $checkout_panes['my_checkout_review']['page'] = 'complete'; // to differentiate
-//  $checkout_panes['my_checkout_review']['weight'] = -25; // to differentiate
+  // The idea of this override is related with callback function that should be implemented before called.
+  // And if duplicate pane is in the different page than the original - it contains. ac_cpm module as initiator
+  // And then it does not find callback of an original module.
+  // Original module is overriden by commerce_checkout.module line 537.
+  foreach ($checkout_panes as $pane_id => $pane) {
+    if (isset($pane['original_module'])) {
+      // We override module with presaved original module.
+      $checkout_panes[$pane_id]['module'] = $pane['original_module'];
+    }
+  }
 }
 
 /**
@@ -86,16 +91,17 @@ function ac_cpm_make_duplicates($title, $multiply_number) {
       $duplicates[$key]['pane_id'] = $key;
 
       // Save our pane imidiatelly if it was not saved.
-      if (!_ac_cpm_is_saved($key)) {
+      if (!_ac_cpm_is_saved($key) && isset($pane['saved']) && $pane['saved']) {
         commerce_checkout_pane_save($duplicates[$key]);
       }
-      
+
       unset($duplicates[$key]['weight']);
       unset($duplicates[$key]['page']);
       unset($duplicates[$key]['review']);
       unset($duplicates[$key]['collapsible']);
       unset($duplicates[$key]['collapsed']);
       unset($duplicates[$key]['enabled']);
+      $duplicates[$key]['original_module'] = $pane['module'];
     } else {
       // Looks like the pane does not exists anymore.
       return array();
