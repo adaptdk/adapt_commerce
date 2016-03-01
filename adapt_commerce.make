@@ -24,6 +24,11 @@ projects[commerce_add_to_cart_confirmation][download][url] = 'http://git.drupal.
 projects[commerce_add_to_cart_confirmation][download][revision] = '69ee3178724e688b0c388b051e1a58a7a54636f1'
 projects[commerce_add_to_cart_confirmation][download][branch] = "7.x-1.x"
 
+; Commerce discount
+projects[commerce_discount][subdir] = 'contrib'
+projects[commerce_discount][type] = module
+projects[commerce_discount][version] = '1.0-alpha7'
+
 ; commerce_price_components
 projects[commerce_price_components][type] = 'module'
 projects[commerce_price_components][subdir] = 'contrib'

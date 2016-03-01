@@ -95,6 +95,7 @@ function ac_cpm_make_duplicates($title, $multiply_number) {
         commerce_checkout_pane_save($duplicates[$key]);
       }
 
+      // Unset fields that have been saved in `commerce_checkout_pane` table.
       unset($duplicates[$key]['weight']);
       unset($duplicates[$key]['page']);
       unset($duplicates[$key]['review']);
