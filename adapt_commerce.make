@@ -169,7 +169,7 @@ libraries[emogrifier_lib][directory_name] = 'emogrifier'
 
 ; Inline Conditions
 projects[inline_conditions][subdir] = 'contrib'
-projects[inline_conditions][version] = '7.x-1.0-alpha7'
+projects[inline_conditions][version] = '1.0-alpha7'
 
 ; ****************
 ; * TRANSLATIONS *
