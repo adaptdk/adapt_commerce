@@ -65,6 +65,8 @@ projects[commerce_rules_extra][subdir] = 'contrib'
 projects[commerce_rules_extra][version] = '2.1'
 
 ; commerce_coupon
+; NOTE: there is 2.x version of this module that contains some additional submodules related to coupon. 
+; check on drupal.org for more info.
 projects[commerce_coupon][subdir] = "contrib"
 projects[commerce_coupon][type] = module
 projects[commerce_coupon][download][type] = git
