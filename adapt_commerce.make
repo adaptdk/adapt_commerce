@@ -74,8 +74,6 @@ projects[commerce_rules_extra][version] = '2.1'
 projects[commerce_coupon][subdir] = "contrib"
 projects[commerce_coupon][type] = module
 projects[commerce_coupon][version] = '2.0-rc2'
-projects[commerce_coupon][patch][] = "http://svnhosttest.adapt.dk/case_and_space_insensitive_coupon.patch"
-projects[commerce_coupon][patch][1797184] = http://www.drupal.org/files/commerce_coupon-1797184-do-not-load-all-coupons-on-checkout-24.patch
 
 ; Inline Conditions
 projects[inline_conditions][subdir] = 'contrib'
