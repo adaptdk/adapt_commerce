@@ -28,6 +28,12 @@ projects[commerce_add_to_cart_confirmation][download][branch] = "7.x-1.x"
 projects[commerce_discount][subdir] = 'contrib'
 projects[commerce_discount][type] = module
 projects[commerce_discount][version] = '1.0-alpha7'
+; @see issue https://www.drupal.org/node/2621526
+projects[commerce_discount][patch][2621526] = https://www.drupal.org/files/issues/2621526-commerce_discount-do_not_compare_existing_discount.patch
+
+; Commerce Discount Product Category
+projects[commerce_discount_product_category][subdir] = 'contrib'
+projects[commerce_discount_product_category][version] = '1.2'
 
 ; commerce_price_components
 projects[commerce_price_components][type] = 'module'
@@ -69,9 +75,7 @@ projects[commerce_rules_extra][version] = '2.1'
 ; check on drupal.org for more info.
 projects[commerce_coupon][subdir] = "contrib"
 projects[commerce_coupon][type] = module
-projects[commerce_coupon][download][type] = git
-projects[commerce_coupon][download][url] = http://git.drupal.org/project/commerce_coupon.git
-projects[commerce_coupon][download][revision] = 124fd85c49ae33885e3da4ecab1f71dcb92268b9
+projects[commerce_coupon][version] = '2.0-rc2'
 projects[commerce_coupon][patch][] = "http://svnhosttest.adapt.dk/case_and_space_insensitive_coupon.patch"
 projects[commerce_coupon][patch][1797184] = http://www.drupal.org/files/commerce_coupon-1797184-do-not-load-all-coupons-on-checkout-24.patch
 
@@ -84,6 +88,10 @@ projects[commerce_coupon_pct][version] = '1.0-beta7'
 projects[commerce_coupon_fixed_amount][type] = 'module'
 projects[commerce_coupon_fixed_amount][subdir] = 'contrib'
 projects[commerce_coupon_fixed_amount][version] = '1.0-beta7'
+
+; Inline Conditions
+projects[inline_conditions][subdir] = 'contrib'
+projects[inline_conditions][version] = '1.0-alpha7'
 
 ; ********************
 ; * MODULES SEARCH *
