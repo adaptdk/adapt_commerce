@@ -1,11 +1,10 @@
-name = GLS Shipping
+name = ac GLS Shipping
 description = Provides GLS shipping method for Drupal commerce.
-package = Commerce (shipping)
+core = 7.x
+package = adapt_commerce
 dependencies[] = commerce
 dependencies[] = commerce_shipping
-core = 7.x
-
-; Information added by drush on 2016-01-14
-version = "7.x-1.x-dev"
-project = "ac_shipping_gls"
-datestamp = "1452767373"
+dependencies[] = defaultconfig
+features[defaultconfig][] = field_default_fields:commerce_order-commerce_order-field_gls_parcelshop
+features[features_api][] = api:2
+features_exclude[dependencies][defaultconfig] = defaultconfig
