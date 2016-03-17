@@ -1,0 +1,11 @@
+name = GLS Shipping
+description = Provides GLS shipping method for Drupal commerce.
+package = Commerce (shipping)
+dependencies[] = commerce
+dependencies[] = commerce_shipping
+core = 7.x
+
+; Information added by drush on 2016-01-14
+version = "7.x-1.x-dev"
+project = "ac_shipping_gls"
+datestamp = "1452767373"

@@ -1,0 +1,194 @@
+<?php
+
+/**
+ * @file
+ * Commerce GLS shipping module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ac_shipping_gls_menu() {
+  $items['admin/commerce/config/shipping/methods/gls-shipping-method/settings'] = array(
+    'title' => 'Commerce shipping GLS settings',
+    'description' => 'Custom settings for GLS shipping module integration.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ac_shipping_gls_settings'),
+    'file' => 'ac_shipping_gls.admin.inc',
+    'access arguments' => array('administer shipping'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_commerce_shipping_method_info().
+ */
+function ac_shipping_gls_commerce_shipping_method_info() {
+  $shipping_methods = array();
+
+  $shipping_methods['gls_shipping_method'] = array(
+    'title' => t('GLS shipping'),
+    'description' => t('Defines GLS shipping service with a package pickup selector.'),
+  );
+
+  return $shipping_methods;
+}
+
+/**
+ * Implements hook_commerce_shipping_service_info().
+ */
+function ac_shipping_gls_commerce_shipping_service_info() {
+  $shipping_services = array();
+
+  $shipping_services['gls_shipping_service'] = array(
+    'title' => t('GLS shipping service'),
+    'description' => t('Defines GLS shipping service with a package pickup selector.'),
+    'display_title' => t('GLS shipping'),
+    'shipping_method' => 'gls_shipping_method',
+    'price_component' => 'gls_component',
+    'callbacks' => array(
+      'rate' => 'ac_shipping_gls_service_rate',
+      'details_form' => 'ac_shipping_gls_service_details_form',
+      'details_form_validate' => 'ac_shipping_gls_service_details_form_validate',
+    ),
+  );
+
+  return $shipping_services;
+}
+
+/**
+ * Shipping service callback.
+ *
+ * Returns a base price array for a shipping service
+ * calculated for the given order.
+ */
+function ac_shipping_gls_service_rate($shipping_service, $order) {
+  $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+  $currency_code = $order_wrapper->commerce_order_total->currency_code->value();
+  return array(
+    'amount' => variable_get('ac_shipping_gls_shipping_rate_amount', 3900),
+    'currency_code' => $currency_code,
+    'data' => array(),
+  );
+}
+
+/**
+ * Shipping service callback.
+ *
+ * Returns the GLS shipping service details form.
+ */
+function ac_shipping_gls_service_details_form($pane_form, $pane_values, $checkout_pane, $order, $shipping_service) {
+  $shop_data = array();
+
+  $shop_options_cache = cache_get('gls_shops_options', 'cache');
+  $shop_data_cache = cache_get('gls_shops_data', 'cache');
+  // Cache component gsl_shop_options validation.
+  $ch_opt_empty = (!empty($shop_options_cache));
+  $ch_opt_data = (isset($shop_options_cache->data));
+  if ($ch_opt_empty) {
+    $ch_opt_length = (count($shop_options_cache->data) > 10);
+  }
+  else {
+    $ch_opt_length = FALSE;
+  }
+  $ch_opt = ($ch_opt_empty && $ch_opt_data && $ch_opt_length);
+  // Cache component gsl_shops_data validation.
+  $ch_dt_empty = (!empty($shop_data_cache));
+  $ch_dt_data = (isset($shop_data_cache->data));
+  if ($ch_dt_empty) {
+    $ch_dt_length = (count($shop_data_cache->data) > 10);
+  }
+  else {
+    $ch_dt_length = FALSE;
+  }
+  $ch_dt = ($ch_dt_empty && $ch_dt_data && $ch_dt_length);
+  // Ensure that cache is set and valid.
+  if ($ch_opt && $ch_dt) {
+    $shop_options = $shop_options_cache->data;
+    $shop_data = $shop_data_cache->data;
+  }
+  else {
+    module_load_include('inc', 'ac_shipping_gls', 'includes/class.wspakkeshop');
+    $ws_pakkeshop = new CommerceShippingGlsWsPakkeshop();
+    $gls_shops = $ws_pakkeshop->getAllParcelShops();
+    foreach ($gls_shops as $gls_shop) {
+      $store_zip = trim($gls_shop->ZipCode);
+      $company_name = trim(utf8_encode($gls_shop->CompanyName));
+      $shop_nr = trim($gls_shop->Number);
+      $city = trim(utf8_encode($gls_shop->CityName));
+      $street_name = trim(utf8_encode($gls_shop->Streetname));
+      $street_name_2 = trim(utf8_encode($gls_shop->Streetname2));
+      $address = $street_name . ', ' . $street_name_2;
+      $shop_options[$shop_nr] = $company_name . ', ' . $store_zip . ' ' . $city;
+      $shop_data[$shop_nr] = array(
+        'first_name' => $company_name,
+        'address' => $address,
+        'zip' => $store_zip,
+        'city' => $city,
+        'email' => '',
+      );
+    }
+    asort($shop_options);
+    // Cache until next cc all.
+    cache_set('gls_shops_options', $shop_options, 'cache', CACHE_PERMANENT);
+    cache_set('gls_shops_data', $shop_data, 'cache', CACHE_PERMANENT);
+  }
+
+  $pane_values['service_details'] += array('store' => '');
+
+  // Define wrapper html with classes for form title.
+  $title_classes = array(
+    'shipping-title',
+    'fieldset-title',
+    'fieldset-legend',
+  );
+  $prefix = '<legend><span class="' . implode(" ", $title_classes) . '">';
+  $suffix = '</span></legend>';
+
+  // Define shipping service form.
+  $form['title'] = array(
+    '#markup' => $prefix . t('Shipping information') . $suffix,
+  );
+  $form['store'] = array(
+    '#type' => 'select',
+    '#title' => t('Select delivery point'),
+    '#options' => $shop_options,
+    '#required' => TRUE,
+  );
+  $form['store_data'] = array(
+    '#type' => 'value',
+    '#value' => $shop_data,
+  );
+
+  return $form;
+}
+
+/**
+ * Shipping service callback.
+ *
+ * Validates the GLS shipping service details.
+ */
+function ac_shipping_gls_service_details_form_validate($details_form, $details_values, $shipping_service, $order, $form_parents) {
+  if (empty($details_values['store_data'])) {
+    $error_elements = implode('][', array_merge($form_parents, array('name')));
+    form_set_error($error_elements, t('You must select a GLS shop'));
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Submit funciton for ac_shipping_gls_service_details_form.
+ * @param array $details_form
+ * @param type $details_values
+ * @param type $shipping_service
+ * @param type $order
+ * @param type $form_parents
+ */
+function ac_shipping_gls_service_details_form_submit($details_form, $details_values, $shipping_service, $order, $form_parents) {
+  dpm($order, 'order');
+  dpm($details_form, 'details_form');
+  dpm($details_values, 'details_values');
+  dpm($shipping_service, 'shipping_service');
+  dpm($form_parents, '$form_parents');
+}

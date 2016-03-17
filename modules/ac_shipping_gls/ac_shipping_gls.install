@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Installation routines for ac_shipping_gls module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function ac_shipping_gls_uninstall() {
+  variable_del('ac_shipping_gls_shipping_rate_amount');
+}
