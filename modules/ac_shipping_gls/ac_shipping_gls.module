@@ -134,7 +134,7 @@ function ac_shipping_gls_service_details_form($pane_form, $pane_values, $checkou
     cache_set('gls_shops_data', $shop_data, 'cache', CACHE_PERMANENT);
   }
 
-  if (!isset($pane_values)) {
+  if (!isset($pane_values['service_details']['store'])) {
     $pane_values['service_details'] += array('store' => '');
   }
 
