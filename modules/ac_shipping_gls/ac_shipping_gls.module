@@ -28,7 +28,7 @@ function ac_shipping_gls_commerce_shipping_method_info() {
 
   $shipping_methods['gls_shipping_method'] = array(
       'title' => t('GLS shipping'),
-      'description' => t('Defines GLS shipping service with a package pickup selector.'),
+      'description' => t('GLS shipping service with ParcelShop selection.'),
   );
 
   return $shipping_methods;
@@ -42,7 +42,7 @@ function ac_shipping_gls_commerce_shipping_service_info() {
 
   $shipping_services['gls_shipping_service'] = array(
       'title' => t('GLS shipping service'),
-      'description' => t('Defines GLS shipping service with a package pickup selector.'),
+      'description' => t('GLS shipping service with ParcelShop selection.'),
       'display_title' => t('GLS shipping'),
       'shipping_method' => 'gls_shipping_method',
       'price_component' => 'gls_component',
