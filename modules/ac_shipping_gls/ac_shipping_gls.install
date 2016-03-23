@@ -9,4 +9,5 @@
  */
 function ac_shipping_gls_uninstall() {
   variable_del('ac_shipping_gls_shipping_rate_amount');
+  variable_del('ac_shipping_gls_shipping_rate_amount_limit');
 }

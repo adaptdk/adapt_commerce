@@ -1,4 +1,4 @@
-<?php
+f<?php
 
 /**
  * @file
@@ -65,8 +65,12 @@ function ac_shipping_gls_commerce_shipping_service_info() {
 function ac_shipping_gls_service_rate($shipping_service, $order) {
   $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
   $currency_code = $order_wrapper->commerce_order_total->currency_code->value();
+  $shipping_amount = variable_get('ac_shipping_gls_shipping_rate_amount', 3900);
+  if($order_wrapper->commerce_order_total->amount->value() >= variable_get('ac_shipping_gls_shipping_rate_amount_limit', 50000)){
+    $shipping_amount = 0;
+  }
   return array(
-      'amount' => variable_get('ac_shipping_gls_shipping_rate_amount', 3900),
+      'amount' => $shipping_amount,
       'currency_code' => $currency_code,
       'data' => array(),
   );
