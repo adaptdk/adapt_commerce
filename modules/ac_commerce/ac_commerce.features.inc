@@ -119,7 +119,7 @@ function ac_commerce_commerce_tax_default_rates() {
   $items = array(
     'dk_moms' => array(
       'name' => 'dk_moms',
-      'display_title' => 'moms',
+      'display_title' => 'Moms',
       'description' => '',
       'rate' => 0.25,
       'type' => 'vat',
