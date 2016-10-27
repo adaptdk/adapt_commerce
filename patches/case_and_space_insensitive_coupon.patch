@@ -1,0 +1,12 @@
+diff --git a/commerce_coupon.module b/commerce_coupon.module
+index bda80a2..4073cf2 100644
+--- a/commerce_coupon.module
++++ b/commerce_coupon.module
+@@ -602,6 +602,7 @@ function commerce_coupon_load_multiple($commerce_coupon_ids = array(), $conditio
+  * @return mixed A coupon object corresponding to the coupon code.
+  */
+ function commerce_coupon_load_by_code($code) {
++  $code = str_replace(' ', '', strtoupper($code));
+   $query = new EntityFieldQuery();
+   $result = $query->entityCondition('entity_type', 'commerce_coupon')
+       ->fieldCondition('commerce_coupon_code', 'value', $code, '=')
