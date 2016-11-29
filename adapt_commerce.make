@@ -9,7 +9,7 @@ api = 2
 ; commerce
 projects[commerce][type] = 'module'
 projects[commerce][subdir] = 'contrib'
-projects[commerce][version] = '1.11'
+projects[commerce][version] = '1.13'
 
 ; commerce_checkout_progress
 projects[commerce_checkout_progress][type] = 'module'
