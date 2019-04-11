@@ -68,6 +68,7 @@ function ac_commerce_field_default_field_instances() {
         'format_handlers' => array(
           0 => 'address',
           1 => 'name-oneline',
+          2 => 'name-full',
         ),
       ),
       'type' => 'addressfield_standard',
@@ -133,6 +134,7 @@ function ac_commerce_field_default_field_instances() {
         'format_handlers' => array(
           0 => 'address',
           1 => 'name-oneline',
+          2 => 'name-full',
         ),
       ),
       'type' => 'addressfield_standard',
