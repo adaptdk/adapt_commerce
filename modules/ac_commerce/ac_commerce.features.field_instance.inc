@@ -10,7 +10,8 @@
 function ac_commerce_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'commerce_customer_profile-billing-commerce_customer_address'
+  // Exported field_instance:
+  // 'commerce_customer_profile-billing-commerce_customer_address'.
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
     'default_value' => NULL,
@@ -59,12 +60,14 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Address',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
+        'default_country' => 'site_default',
         'format_handlers' => array(
           0 => 'address',
           1 => 'name-oneline',
@@ -75,7 +78,8 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_customer_profile-shipping-commerce_customer_address'
+  // Exported field_instance:
+  // 'commerce_customer_profile-shipping-commerce_customer_address'.
   $field_instances['commerce_customer_profile-shipping-commerce_customer_address'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -124,12 +128,14 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Address',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'module' => 'addressfield',
       'settings' => array(
         'available_countries' => array(),
+        'default_country' => 'site_default',
         'format_handlers' => array(
           0 => 'address',
           1 => 'name-oneline',
@@ -140,7 +146,8 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_display_path'
+  // Exported field_instance:
+  // 'commerce_line_item-product-commerce_display_path'.
   $field_instances['commerce_line_item-product-commerce_display_path'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -167,6 +174,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Display path',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -180,7 +188,7 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_product'
+  // Exported field_instance: 'commerce_line_item-product-commerce_product'.
   $field_instances['commerce_line_item-product-commerce_product'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -219,6 +227,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Product',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'field_injection' => TRUE,
       'referenceable_types' => array(),
       'user_register_form' => FALSE,
@@ -235,7 +244,7 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_total'
+  // Exported field_instance: 'commerce_line_item-product-commerce_total'.
   $field_instances['commerce_line_item-product-commerce_total'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -275,6 +284,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Total',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -287,7 +297,7 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_unit_price'
+  // Exported field_instance: 'commerce_line_item-product-commerce_unit_price'.
   $field_instances['commerce_line_item-product-commerce_unit_price'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -327,6 +337,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Unit price',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -339,7 +350,8 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-shipping-commerce_shipping_service'
+  // Exported field_instance:
+  // 'commerce_line_item-shipping-commerce_shipping_service'.
   $field_instances['commerce_line_item-shipping-commerce_shipping_service'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -366,6 +378,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Shipping service',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -376,7 +389,7 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-shipping-commerce_total'
+  // Exported field_instance: 'commerce_line_item-shipping-commerce_total'.
   $field_instances['commerce_line_item-shipping-commerce_total'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -425,6 +438,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Total',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -437,7 +451,7 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-shipping-commerce_unit_price'
+  // Exported field_instance: 'commerce_line_item-shipping-commerce_unit_price'.
   $field_instances['commerce_line_item-shipping-commerce_unit_price'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -486,6 +500,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Unit price',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -498,7 +513,8 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_order-commerce_order-commerce_customer_billing'
+  // Exported field_instance:
+  // 'commerce_order-commerce_order-commerce_customer_billing'.
   $field_instances['commerce_order-commerce_order-commerce_customer_billing'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -531,6 +547,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Billing information',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -541,7 +558,8 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_order-commerce_order-commerce_customer_shipping'
+  // Exported field_instance:
+  // 'commerce_order-commerce_order-commerce_customer_shipping'.
   $field_instances['commerce_order-commerce_order-commerce_customer_shipping'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -574,6 +592,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Shipping information',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -584,7 +603,8 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_order-commerce_order-commerce_line_items'
+  // Exported field_instance:
+  // 'commerce_order-commerce_order-commerce_line_items'.
   $field_instances['commerce_order-commerce_order-commerce_line_items'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -623,6 +643,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Line items',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -633,7 +654,8 @@ function ac_commerce_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_order-commerce_order-commerce_order_total'
+  // Exported field_instance:
+  // 'commerce_order-commerce_order-commerce_order_total'.
   $field_instances['commerce_order-commerce_order-commerce_order_total'] = array(
     'bundle' => 'commerce_order',
     'default_value' => NULL,
@@ -682,6 +704,7 @@ function ac_commerce_field_default_field_instances() {
     'label' => 'Order total',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
